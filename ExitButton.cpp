@@ -1,0 +1,55 @@
+#include "ExitButton.h"
+
+Drawable::ExitButton::ExitButton()
+{
+	_panelSize = sf::Vector2f(_defaultButtonWidth, _defaultButtonHeight);
+	_panelPosition = sf::Vector2f(0, 0);
+
+	_panelColor = sf::Color::White;
+	_panelString = _buttonString;
+
+	_buttonOnColor = sf::Color::Transparent;
+	_buttonOffColor = sf::Color::Transparent;
+	_buttonHoverColor = sf::Color::Transparent;
+
+	SetUpPanel();
+}
+
+Drawable::ExitButton::~ExitButton()
+{
+}
+
+Drawable::ExitButton::ExitButton(
+	sf::Vector2f size,
+	sf::Vector2f position,
+	sf::Color baseColor,
+	sf::Color buttonOnColor,
+	sf::Color buttonOffColor,
+	sf::Color buttonHoverColor,
+	sf::Color buttonTextColor,
+	std::string buttonText)
+{
+	_panelSize = size;
+	_panelPosition = position;
+	_panelColor = baseColor;
+	_buttonOnColor = buttonOnColor;
+	_buttonOffColor = buttonOffColor;
+	_buttonHoverColor = buttonHoverColor;
+	_buttonString = buttonText;
+	_panelString = _buttonString;
+
+	SetUpPanel();
+}
+
+bool Drawable::ExitButton::OnPanelClicked(sf::Vector2i clickPosition)
+{
+	if (_marianneMath.IsPointInRectangle(_panelPosition, _panelSize, clickPosition))
+	{
+		//_panelColor = sf::Color::Color::Red;
+		//_panelColor = sf::Color::Color(rand() % 256, rand() % 256, rand() % 256, 255);
+		//_panelSprite.setColor(_panelColor);
+		return true;
+	}
+
+	return false;
+}
