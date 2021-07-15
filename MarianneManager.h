@@ -11,6 +11,8 @@ class MarianneManager
 
 		static MarianneManager* Instance;
 
+		std::string _filesToLoadPath = "C:\\Users\\15408\\Desktop\\MarianneFilesToLoad\\MarianneMainFileToLoad\\";
+
 		WindowManager _windowManager;
 		InputManager _inputManager;
 
