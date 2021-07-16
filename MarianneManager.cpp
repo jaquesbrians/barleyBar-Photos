@@ -1,6 +1,11 @@
 #include "MarianneManager.h"
 #include "Button.h"
 #include "InputPanel.h"
+#include <iostream>
+#include <fstream>
+#include <cstring>
+#include <string> 
+
 
 MarianneManager* MarianneManager::Instance = NULL;
 
@@ -29,6 +34,14 @@ int MarianneManager::StartMarianneManager()
 
 void MarianneManager::StartAllManagers()
 {
+	std::ifstream sfile(_marianneManagerFilesToLoadPath);
+
+
+
+
+
+
+
 	_windowManager.StartWindowManager();
 
 	_inputManager.StartInputManager(_windowManager);
