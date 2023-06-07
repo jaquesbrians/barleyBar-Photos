@@ -71,7 +71,12 @@ void Drawable::PhotoPanel::ManuallyCyclePhotos(bool cycleRight)
 
 	//_currentBarleyPhoto = _barleyPhotoMaps[_currentBarleyPhotoIndex];
 
-	_currentBarleyPhotos.clear(); // figure out why you wanted to not clear this after changing.  Probably a single vs double layout thing. 20230607
+
+	//Things do to for tomorrow
+	// Get both single panels and double panels working again.  Has to do with currentBarleyPhoto vs currentBarlyePhotos list
+	// figure out why you wanted to not clear this after changing.  Probably a single vs double layout thing. 20230607
+
+	_currentBarleyPhotos.clear(); 
 
 	_currentBarleyPhotos.push_back(_barleyPhotoMaps[_currentBarleyPhotoIndex]);
 
