@@ -1,11 +1,14 @@
 #pragma once
 #include "Panel.h"
+#include "ButtonFunction.h"
+
 namespace Drawable
 {
 	class Button : public Panel
 	{
 		private:
 
+			ButtonFunction* _buttonFunction;
 			int _defaultButtonWidth = 200;
 			int _defaultButtonHeight = 100;
 
@@ -30,7 +33,12 @@ namespace Drawable
 				sf::Color buttonTextColor = sf::Color::Black,
 				std::string buttonText = "BUTTON");
 
-			bool OnPanelClicked(sf::Vector2i clickPosition);
+			bool OnPanelLeftMouseClickedUp(sf::Vector2i clickPosition);
+
+			void SetButtonFunction(ButtonFunction* buttonFunction)
+			{
+				_buttonFunction = buttonFunction;
+			}
 	};
 }
 

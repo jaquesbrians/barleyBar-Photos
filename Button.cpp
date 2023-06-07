@@ -41,12 +41,20 @@ Drawable::Button::Button(
 	SetUpPanel();
 }
 
-bool Drawable::Button::OnPanelClicked(sf::Vector2i clickPosition)
+bool Drawable::Button::OnPanelLeftMouseClickedUp(sf::Vector2i clickPosition)
 {
 	if (_marianneMath.IsPointInRectangle(_panelPosition, _panelSize, clickPosition))
 	{
+		//_panelColor = _trialToggle ? sf::Color::Color::Green : sf::Color::Color::Magenta;
+		//_trialToggle = !_trialToggle;
 		_panelColor = sf::Color::Color(rand() % 256, rand() % 256, rand() % 256, 255);
 		_panelSprite.setColor(_panelColor);
+
+		if (_buttonFunction)
+		{
+			_buttonFunction->Execute();
+		}
+
 		return true;
 	}
 	return false;

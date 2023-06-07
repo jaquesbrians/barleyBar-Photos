@@ -1,4 +1,5 @@
 #include "InputPanel.h"
+#include "WindowManager.h"
 
 Drawable::InputPanel::~InputPanel()
 {
@@ -6,7 +7,7 @@ Drawable::InputPanel::~InputPanel()
 
 Drawable::InputPanel::InputPanel()
 	:
-	_cornerExitButton(_defaultCornerExitButtonSize, sf::Vector2f(0.0f, 0.0f), sf::Color::Green,
+	_cornerExitButton(_defaultCornerExitButtonSize, sf::Vector2f(0.0f, 0.0f), sf::Color::Red,
 		sf::Color::Transparent, sf::Color::Transparent, sf::Color::Transparent, sf::Color::Black, "Yo")
 {
 	_panelSize = _defaultInputPanelSize;
@@ -22,14 +23,16 @@ Drawable::InputPanel::InputPanel()
 	InitializeInputPanelSprites();
 }
 
-Drawable::InputPanel::InputPanel(sf::Vector2f mainPanelSize, sf::Vector2f mainPanelPosition, sf::Color mainPanelColor, int numberOfButtons)
+Drawable::InputPanel::InputPanel(sf::Vector2f mainPanelSize, sf::Vector2f mainPanelPosition, sf::Color mainPanelColor, 
+	int numberOfButtons, ButtonPositions buttonPositions)
 	:
-	_cornerExitButton(_defaultCornerExitButtonSize, sf::Vector2f(0.0f, 0.0f), sf::Color::Green,
+	_cornerExitButton(_defaultCornerExitButtonSize, sf::Vector2f(0.0f, 0.0f), sf::Color::Red,
 	sf::Color::Transparent, sf::Color::Transparent, sf::Color::Transparent, sf::Color::Black, "Yo")
 {
 	_panelSize = mainPanelSize;
 	_panelPosition = mainPanelPosition;
 	_panelColor = mainPanelColor;
+	_defaultButtonPositions = buttonPositions;
 
 	for (int i = 0; i < numberOfButtons; i++)
 	{
@@ -45,7 +48,6 @@ Drawable::InputPanel::InputPanel(sf::Vector2f mainPanelSize, sf::Vector2f mainPa
 
 void Drawable::InputPanel::InitializeInputPanelSprites()
 {
-	int i = _standardInputButtons.size();
 	SetPanelSpritePosition(_panelPosition);
 	SetUpCornerExitButton();
 	SetUpStandardInputButtons();
@@ -55,17 +57,21 @@ void Drawable::InputPanel::InitializeInputPanelSprites()
 
 void Drawable::InputPanel::ContainAllPanelSprites()
 {
-	_inputPanelSprites.clear();
+	this->Panel::ContainAllPanelSprites();
 
-	_inputPanelSprites.push_back(_panelSprite);
-	_inputPanelSprites.push_back(_cornerExitButton.GetPanelSprite());
-	std::list<Button>::iterator it;
-	for (it = _standardInputButtons.begin(); it != _standardInputButtons.end(); ++it) 
+	if (_isHidden == false)
 	{
-		_inputPanelSprites.push_back(it->GetPanelSprite());
+		_panelSprites.push_back(_cornerExitButton.GetPanelSprite());
+		std::list<Button>::iterator it;
+		for (it = _standardInputButtons.begin(); it != _standardInputButtons.end(); ++it)
+		{
+			_panelSprites.push_back(it->GetPanelSprite());
+		}
 	}
+}
 
-	//_inputPanelSprites.push_back(GetPanelText());
+void Drawable::InputPanel::UpdatePanelTimers()
+{
 }
 
 void Drawable::InputPanel::SetUpCornerExitButton()
@@ -83,45 +89,85 @@ void Drawable::InputPanel::SetUpStandardInputButtons()
 	sf::Vector2f inputPanelPos = GetPanelPosition();
 	sf::Vector2f inputPanelSize = GetPanelSize();
 	std::list<Button>::iterator it = _standardInputButtons.begin();
-	int currentButtonYPos = inputPanelPos.y;
+	int currentButtonYPos = inputPanelPos.y + _defaultButtonSpace;
 	for (int i = 0; i < _standardInputButtons.size(); i++)
 	{
 		int advanceIt = i == 0 ? i : 1;
 		std::advance(it, advanceIt);
 		sf::Vector2f standardButtonSize = it->GetPanelSize();
-		it->SetPanelSpritePosition(sf::Vector2f(
-			(inputPanelPos.x + (inputPanelSize.x * 0.5f)) - (standardButtonSize.x * 0.5f),
-			(currentButtonYPos + _defaultButtonSpace)));
+
+		float x = 0;
+		float y = currentButtonYPos + _defaultButtonSpace;
+
+		if (_defaultButtonPositions == Center)
+		{
+			x = inputPanelPos.x + (inputPanelSize.x * 0.5f) - (standardButtonSize.x * 0.5f);
+		}
+		else if (_defaultButtonPositions == Left)
+		{
+			x = inputPanelPos.x + _defaultButtonSpace * 2;
+		}
+		else if (_defaultButtonPositions == Right)
+		{
+			x = inputPanelPos.x + _defaultButtonSpace + (standardButtonSize.x * 0.5f);
+		}
+
+		it->SetPanelSpritePosition(sf::Vector2f(x, y));
+
 		currentButtonYPos = currentButtonYPos + _defaultButtonSpace + standardButtonSize.y;
 	}
-
-	//it = _standardInputButtons.begin();
-	//_buttonFunctionMap.emplace(it, &Drawable::InputPanel::ButtonOneOperation);
-	//https://stackoverflow.com/questions/26123838/c-mapstring-function
 }
 
 std::list<sf::Sprite> Drawable::InputPanel::GetInputPanelSprites()
 {
-	return _inputPanelSprites;
+	return _panelSprites;  
 }
 
-bool Drawable::InputPanel::OnPanelClicked(sf::Vector2i clickPosition)
+void Drawable::InputPanel::HidePanel(sf::Vector2f hiddenPanelPosition)
+{
+	_hiddenPanelPosition = hiddenPanelPosition;
+	_panelSprite.setPosition(_hiddenPanelPosition);
+
+	sf::Vector2f hiddenPanelScale = WindowManager::GetInstance()->GiveHiddenPanelScale();
+	_panelSprite.setScale(hiddenPanelScale);
+
+	float cornerButtonHiddenX = _hiddenPanelPosition.x + (GetPanelSize().x * hiddenPanelScale.x) - _cornerExitButton.GetPanelSize().x;
+	_cornerExitButton.SetPanelSpritePosition(sf::Vector2f(cornerButtonHiddenX, _hiddenPanelPosition.y));
+	_panelSprites.clear();
+	_panelSprites.push_back(_panelSprite);
+	_panelSprites.push_back(_cornerExitButton.GetPanelSprite());
+}
+
+
+void Drawable::InputPanel::ShowPanel()
+{
+	_isHidden = false;
+	WindowManager::GetInstance()->HideOrShowAPanel(this, false);
+	_panelSprite.setPosition(_panelPosition);
+	_panelSprite.setScale(sf::Vector2f(1, 1));
+	SetUpCornerExitButton();
+	ContainAllPanelSprites();
+}
+
+bool Drawable::InputPanel::OnPanelLeftMouseClickedUp(sf::Vector2i clickPosition)
 {
 	bool buttonClicked = false;
 	
-	buttonClicked = _cornerExitButton.OnPanelClicked(clickPosition);
+	buttonClicked = _cornerExitButton.OnPanelLeftMouseClickedUp(clickPosition);
 
-	//pfunc f = funcMap[commandType];
-	//(*f)(commandParam); */
-
-	//Button::iterator it
-
-	
-	std::list<Button>::iterator it = _standardInputButtons.begin();
-	if (it->OnPanelClicked(clickPosition))
+	if (buttonClicked)
 	{
-		//ScriptFunction scriptFunction = _buttonFunctionMap[*it];
-		//(*scriptFunction);
+		if (_isHidden == false)
+		{
+			_isHidden = true;
+			WindowManager::GetInstance()->HideOrShowAPanel(this, true);
+			HidePanel(WindowManager::GetInstance()->GiveHiddenPanelPosition(_panelSize));
+		}
+		else
+		{
+			ShowPanel();
+		}
+		return true;
 	}
 
 
@@ -129,7 +175,7 @@ bool Drawable::InputPanel::OnPanelClicked(sf::Vector2i clickPosition)
 	{
 		for (std::list<Button>::iterator it = _standardInputButtons.begin(); it != _standardInputButtons.end(); ++it)
 		{
-			buttonClicked = it->OnPanelClicked(clickPosition);
+			buttonClicked = it->OnPanelLeftMouseClickedUp(clickPosition);
 			if (buttonClicked)
 			{
 				break;
@@ -137,21 +183,63 @@ bool Drawable::InputPanel::OnPanelClicked(sf::Vector2i clickPosition)
 		}
 	}
 
-	if (!buttonClicked)
+	if (_marianneMath.IsPointInRectangle(_panelPosition, _panelSize, clickPosition))
 	{
-		buttonClicked = Panel::OnPanelClicked(clickPosition);
+		_panelSprite.setColor(_panelColor);
+		buttonClicked = true;
 	}
+	
 	
 	ContainAllPanelSprites();
 
 	return buttonClicked;
 }
 
-void Drawable::InputPanel::ButtonOneOperation()
+bool Drawable::InputPanel::OnPanelLeftMouseHoldDown(sf::Vector2i clickPosition, sf::Vector2i previousClickPosition)
 {
+	if (_isHidden)
+	{
+		return false;
+	}
 
-	int i = 5;
-	//_panelColor = sf::Color::Color::Red;
-	//_panelColor = sf::Color::Color(rand() % 256, rand() % 256, rand() % 256, 255);
-	//_panelSprite.setColor(_panelColor);
+	bool panelClicked = false;
+	panelClicked = _marianneMath.IsPointInRectangle(_panelPosition, _panelSize, clickPosition);
+
+	if (panelClicked && IsPointInInputPanelButtons(clickPosition) == false)
+	{
+		_panelSprite.setColor(sf::Color::Color::White);
+		float x = clickPosition.x - previousClickPosition.x;
+		float y = clickPosition.y - previousClickPosition.y;
+		sf::Vector2f movePanelDirections(x, y);
+		MovePanelPosition(movePanelDirections);
+		_cornerExitButton.MovePanelPosition(movePanelDirections);
+		std::list<Button>::iterator it;
+		for (it = _standardInputButtons.begin(); it != _standardInputButtons.end(); ++it)
+		{
+			it->MovePanelPosition(movePanelDirections);
+		}
+
+		ContainAllPanelSprites();
+		return true;
+	}
+	return panelClicked;
+}
+
+bool Drawable::InputPanel::IsPointInInputPanelButtons(sf::Vector2i clickPosition)
+{
+	if (_marianneMath.IsPointInRectangle(_cornerExitButton.GetPanelPosition(), _cornerExitButton.GetPanelSize(), clickPosition))
+	{
+		return true;
+	}
+
+	std::list<Button>::iterator it;
+	for (it = _standardInputButtons.begin(); it != _standardInputButtons.end(); ++it)
+	{
+		if (_marianneMath.IsPointInRectangle(it->GetPanelPosition(), it->GetPanelSize(), clickPosition))
+		{
+			return true;
+		}
+	}
+
+	return false;
 }

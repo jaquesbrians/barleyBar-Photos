@@ -11,7 +11,8 @@ class WindowLayoutManager
 
 		int windowWidth;
 		int windowHeight;
-
+		float windowPositionX = 0.0f;
+		float windowPositionY = 0.0f;
 
 		enum WindowLayoutMode
 		{
@@ -24,11 +25,12 @@ class WindowLayoutManager
 		};
 
 		WindowLayoutMode currentWindowLayoutMode = noWindowLayoutMode;
+		int numberOfPhotosPerWindow = 0;
 
 		std::map<int, WindowLayout*> windowLayoutMap;
 
 		void SetSingleWindowLayout();
 		void SetDoubleWindowLayout();
-		void SetPhotoInitialPositionAndScale(BarleyPhoto& barleyPhoto);
+		void SetPhotoInitialPositionAndScale(BarleyPhoto &barleyPhoto);
 		float GetPhotoScale();
 };

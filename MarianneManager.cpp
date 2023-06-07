@@ -36,12 +36,6 @@ void MarianneManager::StartAllManagers()
 {
 	std::ifstream sfile(_marianneManagerFilesToLoadPath);
 
-
-
-
-
-
-
 	_windowManager.StartWindowManager();
 
 	_inputManager.StartInputManager(_windowManager);

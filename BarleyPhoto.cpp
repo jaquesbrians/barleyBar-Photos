@@ -18,3 +18,11 @@ void BarleyPhoto::LoadSprite(std::string photoPathWay)
 	sf::Sprite sprite(texture);
 	barleySprite = sprite;
 }
+
+void BarleyPhoto::SetSpritePosition(sf::Vector2f panelPositionDirections)
+{
+	sf::Vector2f updateSpritePosition = barleySprite.getPosition();
+	updateSpritePosition.x = updateSpritePosition.x + panelPositionDirections.x;
+	updateSpritePosition.y = updateSpritePosition.y + panelPositionDirections.y;
+	barleySprite.setPosition(updateSpritePosition);
+}

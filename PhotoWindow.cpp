@@ -15,6 +15,7 @@ PhotoWindow::PhotoWindow(int photoWindowWidth, int photoWindowHeight, std::strin
 
 void PhotoWindow::SetUpPhotoWindow(int photoWindowWidth, int photoWindowHeight, std::string photoWindowName)
 {
+	//renderWindow.create(sf::VideoMode(photoWindowWidth, photoWindowHeight), photoWindowName, sf::Style::Fullscreen);
 	renderWindow.create(sf::VideoMode(photoWindowWidth, photoWindowHeight), photoWindowName);
 }
 

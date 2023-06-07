@@ -3,10 +3,12 @@
 WindowLayout::WindowLayout(){}
 
 
-WindowLayout::WindowLayout(int windowWidth, int windowHeight)
+WindowLayout::WindowLayout(int windowWidth, int windowHeight, float windowPositionX, float windowPositionY)
 {
 	_windowWidth = windowWidth;
 	_windowHeight = windowHeight;
+	_windowPositionX = windowPositionX;
+	_windowPositionY = windowPositionY;
 }
 
 void WindowLayout::TurnOffMotionToLayout()
@@ -19,7 +21,7 @@ float WindowLayout::GetSpriteScale()
 	return 0.0f;
 }
 
-void WindowLayout::SetInitialSpritePositionAndScale(BarleyPhoto& barleyPhoto)
+void WindowLayout::SetInitialSpritePositionAndScale(BarleyPhoto &barleyPhoto)
 {
 }
 

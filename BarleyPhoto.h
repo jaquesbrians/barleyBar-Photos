@@ -10,17 +10,13 @@ class BarleyPhoto
 	public:
 
 		sf::Texture texture;
-
 		sf::Image image;
-
 		sf::Sprite barleySprite;
-
+		sf::Vector2u textureSize;
 		float spriteWidthPosition = 0;
-
 		float spriteHeightPosition = 0;
 
-		sf::Vector2u textureSize;
-
 		void LoadSprite(std::string);
+		void SetSpritePosition(sf::Vector2f panelPositionDirections);
 };
 

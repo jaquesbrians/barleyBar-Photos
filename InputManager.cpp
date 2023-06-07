@@ -11,16 +11,24 @@ void InputManager::StartInputManager(WindowManager& windowManager)
 
 void InputManager::UpdateInputManager()
 {
-
 	_leftMouseCurrentlyPressed = sf::Mouse::isButtonPressed(sf::Mouse::Left);
+	sf::Vector2i position = sf::Mouse::getPosition(_windowManager->photoWindow.renderWindow);
 
-	if ((_leftMouseCurrentlyPressed && _leftMousePreviouslyPressed == false))
+	if ((_leftMouseCurrentlyPressed == false && _leftMousePreviouslyPressed == true))
 	{
-		sf::Vector2i position = sf::Mouse::getPosition(_windowManager->photoWindow.renderWindow);
-		_windowManager->CheckInteractionWithLeftMouseClick(position);
+		// Left Mouse Up
+		_windowManager->CheckInteractionWithLeftMouseClickUp(position);
+	}
+	else if ((_leftMouseCurrentlyPressed == true && _leftMousePreviouslyPressed == true))
+	{
+		// Holding Left Mouse Down
+		_windowManager->CheckInteractionWithLeftMouseHoldDown(position, _leftMousePreviousPosition);
 	}
 
 	_leftMousePreviouslyPressed = _leftMouseCurrentlyPressed;
+	_leftMousePreviousPosition.x = position.x;
+	_leftMousePreviousPosition.y = position.y;
+
 
 
 
@@ -35,6 +43,11 @@ void InputManager::UpdateInputManager()
 	{
 
 	}*/
+
+	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Escape))
+	{
+		_windowManager->CloseWindow();
+	}
 
 	if (sf::Keyboard::isKeyPressed(sf::Keyboard::Up))
 	{	

@@ -1,4 +1,5 @@
 #include "Panel.h"
+#include "WindowManager.h"
 Drawable::Panel::Panel()
 {
 }
@@ -10,6 +11,8 @@ Drawable::Panel::~Panel()
 
 Drawable::Panel::Panel(sf::Vector2f size, sf::Vector2f position, sf::Color color)
 {
+	
+	//_panelID = windowManager.GiveUniquePanelID();
 	_panelSize = size;
 	_panelPosition = position;
 	_panelColor = color;
@@ -63,15 +66,52 @@ void Drawable::Panel::SetPanelSpritePosition(sf::Vector2f newSpritePosition)
 	_panelSprite.setPosition(newSpritePosition);
 }
 
-bool Drawable::Panel::OnPanelClicked(sf::Vector2i clickPosition)
+void Drawable::Panel::MovePanelPosition(sf::Vector2f panelPositionDirections)
+{
+	_panelPosition.x = _panelPosition.x + panelPositionDirections.x;
+	_panelPosition.y = _panelPosition.y + panelPositionDirections.y;
+	_panelSprite.setPosition(_panelPosition);
+}
+
+void Drawable::Panel::UpdatePanelTimers()
+{
+	int eight = 8;
+}
+
+
+bool Drawable::Panel::OnPanelLeftMouseClickedUp(sf::Vector2i clickPosition)
 {
 	if (_marianneMath.IsPointInRectangle(_panelPosition, _panelSize, clickPosition))
-	{
-		_panelColor = _trialToggle ? sf::Color::Color::Green : sf::Color::Color::Magenta;
-		_trialToggle = !_trialToggle;
-		_panelSprite.setColor(_panelColor);
+	{	
 		return true;
 	}
 	return false;
+}
+
+bool Drawable::Panel::OnPanelLeftMouseHoldDown(sf::Vector2i clickPosition)
+{
+	if (_marianneMath.IsPointInRectangle(_panelPosition, _panelSize, clickPosition))
+	{
+		_panelSprite.setColor(sf::Color::Color::Yellow);
+		return true;
+	}
+	return false;
+}
+
+void Drawable::Panel::HidePanel()
+{
+}
+
+void Drawable::Panel::ShowPanel()
+{
+}
+
+void Drawable::Panel::ContainAllPanelSprites()
+{
+	if (_isHidden == false)
+	{
+		_panelSprites.clear();
+		_panelSprites.push_back(_panelSprite);
+	}
 }
 

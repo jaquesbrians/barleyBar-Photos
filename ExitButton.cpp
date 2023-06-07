@@ -41,15 +41,20 @@ Drawable::ExitButton::ExitButton(
 	SetUpPanel();
 }
 
-bool Drawable::ExitButton::OnPanelClicked(sf::Vector2i clickPosition)
+bool Drawable::ExitButton::OnPanelLeftMouseClickedUp(sf::Vector2i clickPosition)
 {
 	if (_marianneMath.IsPointInRectangle(_panelPosition, _panelSize, clickPosition))
 	{
-		//_panelColor = sf::Color::Color::Red;
-		//_panelColor = sf::Color::Color(rand() % 256, rand() % 256, rand() % 256, 255);
-		//_panelSprite.setColor(_panelColor);
+		_panelColor = _isHidden ? sf::Color::Red : sf::Color::Green;
+		_isHidden = !_isHidden;
+		_panelSprite.setColor(_panelColor);
 		return true;
 	}
 
+	return false;
+}
+
+bool Drawable::ExitButton::OnPanelLeftMouseHoldDown(sf::Vector2i clickPosition)
+{
 	return false;
 }

@@ -1,22 +1,23 @@
 #pragma once
 #include <SFML/Graphics.hpp>
 #include "MarianneMath.h"
+#include <list>
 
 namespace Drawable
 {
 	class Panel 
 	{
-		private:
-
+		protected:
+			
 			std::string _fontDirectoryPath = "C:\\Users\\15408\\Desktop\\MarianneFonts\\arial.ttf";
 
-			int _trialToggle = false;
-
-		protected:
+			std::list<sf::Sprite> _panelSprites;
 
 			Math::MarianneMath _marianneMath;
+
 			sf::Uint8* _panelPixels;
 			sf::Vector2f _panelPosition;
+			sf::Vector2f _hiddenPanelPosition;
 			sf::Vector2f _panelSize;
 			sf::Sprite _panelSprite;
 			sf::Texture _panelTexture;
@@ -25,8 +26,13 @@ namespace Drawable
 			sf::Font _panelFontArial;
 			std::string _panelString;
 			sf::Color _panelTextColor = sf::Color::Black;
+			int _panelID = -1;
+
+			bool _isHidden = false;
 
 			void SetUpPanel();
+
+		protected:
 
 		public: 
 
@@ -34,9 +40,14 @@ namespace Drawable
 			Panel(sf::Vector2f size, sf::Vector2f position, sf::Color color);
 			~Panel();
 
+			virtual void ContainAllPanelSprites();
+			virtual void MovePanelPosition(sf::Vector2f panelPositionDirections);
+			virtual void UpdatePanelTimers();
+
 			void SetPanelSpritePosition(sf::Vector2f newSpritePosition);
 
 			sf::Vector2f GetPanelPosition() { return _panelPosition; }
+			sf::Vector2f GetHiddenPanelPosition() { return _hiddenPanelPosition; }
 			sf::Vector2f GetPanelSize() { return _panelSize; }
 			sf::Sprite GetPanelSprite() { return _panelSprite; }
 			sf::Color GetPanelColor() { return _panelColor; }
@@ -48,7 +59,11 @@ namespace Drawable
 			void SetPanelColor(sf::Color newPanelColor) { _panelColor = newPanelColor; }
 			void SetPanelText(sf::Text newPanelText) { _panelText = newPanelText; }	
 
-			bool OnPanelClicked(sf::Vector2i clickPosition);
+			void HidePanel();
+			void ShowPanel();
+
+			bool OnPanelLeftMouseClickedUp(sf::Vector2i clickPosition);
+			bool OnPanelLeftMouseHoldDown(sf::Vector2i clickPosition);
 	};
 }
 

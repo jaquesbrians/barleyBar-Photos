@@ -5,11 +5,13 @@ class WindowLayout
 {
 	protected:
 
-		bool _applyMotionToLayout;
-
 		int _windowWidth;
-
 		int _windowHeight;
+
+		float _windowPositionX = 0.0f;
+		float _windowPositionY = 0.0f;
+
+		bool _applyMotionToLayout;
 
 		void TurnOnMotionToLayout();
 		void TurnOffMotionToLayout();
@@ -17,9 +19,9 @@ class WindowLayout
 	public:
 
 		WindowLayout();
-		WindowLayout(int windowWidth, int windowHeight);
+		WindowLayout(int windowWidth, int windowHeight, float windowPositionX, float windowPositionY);
 
 		virtual float GetSpriteScale();
-		virtual void SetInitialSpritePositionAndScale(BarleyPhoto& barleyPhoto);
+		virtual void SetInitialSpritePositionAndScale(BarleyPhoto &barleyPhoto);
 		virtual void ApplyMotionToLayout();
 };

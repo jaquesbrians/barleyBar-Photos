@@ -149,6 +149,7 @@
   <ItemGroup>
     <ClCompile Include="BarleyPhoto.cpp" />
     <ClCompile Include="Button.cpp" />
+    <ClCompile Include="ButtonFunction.cpp" />
     <ClCompile Include="ColorChanger.cpp" />
     <ClCompile Include="DoubleWindowLayout.cpp" />
     <ClCompile Include="ExitButton.cpp" />
@@ -158,9 +159,11 @@
     <ClCompile Include="MarianneManager.cpp" />
     <ClCompile Include="MarianneMath.cpp" />
     <ClCompile Include="PhotoCombiner.cpp" />
+    <ClCompile Include="PhotoPanel.cpp" />
     <ClCompile Include="PhotoWindow.cpp" />
     <ClCompile Include="PhotoWindowManager.cpp" />
     <ClCompile Include="Panel.cpp" />
+    <ClCompile Include="StartingInputPanel.cpp" />
     <ClCompile Include="SingleWindowLayout.cpp" />
     <ClCompile Include="WindowLayout.cpp" />
     <ClCompile Include="WindowLayoutManager.cpp" />
@@ -169,6 +172,7 @@
   <ItemGroup>
     <ClInclude Include="BarleyPhoto.h" />
     <ClInclude Include="Button.h" />
+    <ClInclude Include="ButtonFunction.h" />
     <ClInclude Include="ColorChanger.h" />
     <ClInclude Include="DoubleWindowLayout.h" />
     <ClInclude Include="ExitButton.h" />
@@ -177,9 +181,11 @@
     <ClInclude Include="MarianneManager.h" />
     <ClInclude Include="MarianneMath.h" />
     <ClInclude Include="PhotoCombiner.h" />
+    <ClInclude Include="PhotoPanel.h" />
     <ClInclude Include="PhotoWindow.h" />
     <ClInclude Include="PhotoWindowManager.h" />
     <ClInclude Include="Panel.h" />
+    <ClInclude Include="StartingInputPanel.h" />
     <ClInclude Include="SingleWindowLayout.h" />
     <ClInclude Include="WindowLayoutManager.h" />
     <ClInclude Include="WindowLayout.h" />

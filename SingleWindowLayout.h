@@ -9,11 +9,11 @@ class SingleWindowLayout : public WindowLayout
 
 	public:
 
-		SingleWindowLayout(int windowWidth, int windowHeight);
+		SingleWindowLayout(int windowWidth, int windowHeight, float windowPositionX, float windowPositionY);
 
 		float GetSpriteScale();
 
-		void SetInitialSpritePositionAndScale(BarleyPhoto& barleyPhoto);
+		void SetInitialSpritePositionAndScale(BarleyPhoto &barleyPhoto);
 
 		void ApplyMotionToLayout();
 };

@@ -27,7 +27,7 @@ int PhotoWindowManager::StartPhotoWindowManager()
 		std::string path_string{ entry.path().u8string() };
 		_barleyPhotoMaps.insert(std::pair<int, BarleyPhoto>(photoIndex, barleyPhoto));
 		_barleyPhotoMaps[photoIndex].LoadSprite(path_string);
-		_windowLayoutManager.SetPhotoInitialPositionAndScale(_barleyPhotoMaps[photoIndex]);
+		//_windowLayoutManager.SetPhotoInitialPositionAndScale(_barleyPhotoMaps[photoIndex]);
 		photoIndex++;
 	}
 

@@ -30,6 +30,8 @@ namespace Drawable
 			sf::Color buttonTextColor = sf::Color::Black,
 			std::string buttonText = "BUTTON");
 
-		bool OnPanelClicked(sf::Vector2i clickPosition);
+		bool OnPanelLeftMouseClickedUp(sf::Vector2i clickPosition);
+		bool OnPanelLeftMouseHoldDown(sf::Vector2i clickPosition);
+		
 	};
 }
