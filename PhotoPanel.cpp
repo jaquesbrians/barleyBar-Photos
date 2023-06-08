@@ -18,8 +18,8 @@ void Drawable::PhotoPanel::SetUpPhotoPanel()
 	_windowLayoutManager.windowHeight = GetPanelSize().y;
 	_windowLayoutManager.windowPositionX = GetPanelPosition().x;
 	_windowLayoutManager.windowPositionY = GetPanelPosition().y;
-	_windowLayoutManager.SetSingleWindowLayout();
-	//_windowLayoutManager.SetDoubleWindowLayout();
+	//_windowLayoutManager.SetSingleWindowLayout();
+	_windowLayoutManager.SetDoubleWindowLayout();
 
 	int photoIndex = 0;
 	for (const auto& entry : std::filesystem::directory_iterator(_directoryPath))
@@ -30,16 +30,12 @@ void Drawable::PhotoPanel::SetUpPhotoPanel()
 		_barleyPhotoMaps[photoIndex].LoadSprite(path_string);
 		_allRandomPhotosVector.push_back(photoIndex);
 		_remainingRandomPhotosVector.push_back(photoIndex);
-		_windowLayoutManager.SetPhotoInitialPositionAndScale(_barleyPhotoMaps[photoIndex]); 
+		//_windowLayoutManager.SetPhotoInitialPositionAndScale(_barleyPhotoMaps[photoIndex]); 
 
 		photoIndex++;
 	}
 
 	_barleyPhotoMapSize = photoIndex;
-
-	//_currentBarleyPhoto = _barleyPhotoMaps[_currentBarleyPhotoIndex];
-	//_barleyPhotoMapSize = photoIndex;
-	//ResetPanelSprites();
 
 	RandomlyCyclePhoto();
 }
@@ -69,17 +65,12 @@ void Drawable::PhotoPanel::ManuallyCyclePhotos(bool cycleRight)
 		_currentBarleyPhotoIndex = _currentBarleyPhotoIndex < 0 ? _barleyPhotoMapSize - 1 : _currentBarleyPhotoIndex;
 	}
 
-	//_currentBarleyPhoto = _barleyPhotoMaps[_currentBarleyPhotoIndex];
-
-
-	//Things do to for tomorrow
-	// Get both single panels and double panels working again.  Has to do with currentBarleyPhoto vs currentBarlyePhotos list
-	// figure out why you wanted to not clear this after changing.  Probably a single vs double layout thing. 20230607
 
 	_currentBarleyPhotos.clear(); 
 
-	_currentBarleyPhotos.push_back(_barleyPhotoMaps[_currentBarleyPhotoIndex]);
+	_windowLayoutManager.SetPhotoInitialPositionAndScale(_barleyPhotoMaps[_currentBarleyPhotoIndex]);
 
+	_currentBarleyPhotos.push_back(_barleyPhotoMaps[_currentBarleyPhotoIndex]);
 
 	ResetPanelSprites();
 }
@@ -105,8 +96,7 @@ void Drawable::PhotoPanel::RandomlyCyclePhotoHelper()
 	int randomIndex = rand() % _remainingRandomPhotosVector.size();
 	int selectedPhoto = _remainingRandomPhotosVector[randomIndex];
 	_remainingRandomPhotosVector.erase(_remainingRandomPhotosVector.begin() + randomIndex);
-	//_currentBarleyPhoto = _barleyPhotoMaps[selectedPhoto];
-
+	_windowLayoutManager.SetPhotoInitialPositionAndScale(_barleyPhotoMaps[selectedPhoto]);
 	_currentBarleyPhotos.push_back(_barleyPhotoMaps[selectedPhoto]);
 	//_currentBarleyPhotos.push_back(_barleyPhotoMaps[1]);
 }
@@ -144,7 +134,6 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 void Drawable::PhotoPanel::MovePanelPosition(sf::Vector2f panelPositionDirections)
 {
 	MovePanelPosition(panelPositionDirections);
-	//_currentBarleyPhoto.SetSpritePosition(panelPositionDirections);
 
 
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)

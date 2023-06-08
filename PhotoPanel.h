@@ -9,7 +9,6 @@ namespace Drawable
 	{
 		public:
 
-			BarleyPhoto _currentBarleyPhoto;
 			std::vector<BarleyPhoto> _currentBarleyPhotos;
 			ColorChanger _currentBackGroundColor = sf::Color::White;
 
