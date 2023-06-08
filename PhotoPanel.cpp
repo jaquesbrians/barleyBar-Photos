@@ -75,6 +75,12 @@ void Drawable::PhotoPanel::ManuallyCyclePhotos(bool cycleRight)
 	ResetPanelSprites();
 }
 
+//Things to do for tomorrow -  20230608
+//Ensure timing buttons work with switching
+// try and figure out manually going through photos working with double layout
+// changing layouts (single and double) within buttons in game
+// gotta get text up and running at some point so buttons are easy to see what they do
+
 void Drawable::PhotoPanel::RandomlyCyclePhoto()
 {
 	for (int i = 0; i < _windowLayoutManager.numberOfPhotosPerWindow; i++)
