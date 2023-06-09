@@ -76,11 +76,10 @@ void Drawable::PhotoPanel::ManuallyCyclePhotos(bool cycleRight)
 	ResetPanelSprites();
 }
 
-//Things to do for tomorrow -  20230608
-//Ensure timing buttons work with switching
-// try and figure out manually going through photos working with double layout
+//Things to do for tomorrow -  20230609
 // changing layouts (single and double) within buttons in game
-// gotta get text up and running at some point so buttons are easy to see what they do
+// gotta get text up and running at some point so buttons are easy to see what they do (look into hello on normal panel and why that is working?)
+//check timing swapping again
 
 void Drawable::PhotoPanel::RandomlyCyclePhoto()
 {
