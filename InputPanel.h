@@ -17,8 +17,8 @@ namespace Drawable
 			enum ButtonPositions { Left, Center, Right };
 
 		protected :
-			ButtonPositions _defaultButtonPositions = Center;
 			int _defaultButtonSpace = 10;
+			ButtonPositions _defaultButtonPositions = Center;
 			sf::Vector2f _defaultInputPanelSize = sf::Vector2f(500.0f, 500.0f);
 			sf::Vector2f _defaultCornerExitButtonSize = sf::Vector2f(30.0f, 30.0f);
 			sf::Vector2f _defaultStandardInputButtonSize = sf::Vector2f(200.0f, 75.0f);
@@ -45,6 +45,7 @@ namespace Drawable
 			void SetUpCornerExitButton();
 			void SetUpStandardInputButtons();
 			std::list<sf::Sprite> GetInputPanelSprites();
+			std::list<std::string> GetInputPanelStrings();
 
 			void HidePanel(sf::Vector2f hiddenPanelPosition);
 			void ShowPanel();

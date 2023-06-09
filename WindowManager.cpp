@@ -77,7 +77,6 @@ void WindowManager::UpdateWindowManager()
 
 		for (std::list<InputPanel*>::iterator it = _inputPanels.begin(); it != _inputPanels.end(); it++)
 		{
-			//(*it)->UpdatePanelTimers();
 			AddSpritesToDrawList((*it)->GetInputPanelSprites(), 1);
 			AddTextToDrawList((*it)->GetPanelText(), 2);
 			(*it)->UpdatePanelTimers();
@@ -85,6 +84,7 @@ void WindowManager::UpdateWindowManager()
 
 		photoWindow.DrawCall(_currentBackGroundColor.RandomColorFadeTimeElapse(), _spriteDrawList, _textDrawList);
 		_spriteDrawList.clear();
+		_textDrawList.clear();
 	}
 }
 

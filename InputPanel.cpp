@@ -62,10 +62,12 @@ void Drawable::InputPanel::ContainAllPanelSprites()
 	if (_isHidden == false)
 	{
 		_panelSprites.push_back(_cornerExitButton.GetPanelSprite());
+		_panelTexts.push_back(_cornerExitButton.GetPanelText());
 		std::list<Button>::iterator it;
 		for (it = _standardInputButtons.begin(); it != _standardInputButtons.end(); ++it)
 		{
 			_panelSprites.push_back(it->GetPanelSprite());
+			_panelTexts.push_back(it->GetPanelText());
 		}
 	}
 }
@@ -121,6 +123,11 @@ void Drawable::InputPanel::SetUpStandardInputButtons()
 std::list<sf::Sprite> Drawable::InputPanel::GetInputPanelSprites()
 {
 	return _panelSprites;  
+}
+
+std::list<std::string> Drawable::InputPanel::GetInputPanelStrings()
+{
+	return _panelStrings;
 }
 
 void Drawable::InputPanel::HidePanel(sf::Vector2f hiddenPanelPosition)

@@ -12,6 +12,7 @@ namespace Drawable
 			std::string _fontDirectoryPath = "C:\\Users\\15408\\Desktop\\PhotoProject\\MarianneFonts\\arial.ttf";
 
 			std::list<sf::Sprite> _panelSprites;
+			std::list<sf::Text> _panelTexts;
 
 			Math::MarianneMath _marianneMath;
 

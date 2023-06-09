@@ -45,6 +45,7 @@ void Drawable::Panel::SetUpPanel()
 
 	if (!_panelString.empty())
 	{
+		//this font directory needs to be more top level, instead of in each panel.
 		_panelFontArial.loadFromFile(_fontDirectoryPath);
 		_panelText.setString(_panelString);
 		_panelText.setFont(_panelFontArial);
@@ -112,6 +113,9 @@ void Drawable::Panel::ContainAllPanelSprites()
 	{
 		_panelSprites.clear();
 		_panelSprites.push_back(_panelSprite);
+
+		_panelTexts.clear();
+		_panelTexts.push_back(_panelText);
 	}
 }
 
