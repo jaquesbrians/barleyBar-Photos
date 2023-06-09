@@ -15,7 +15,7 @@ float WindowLayoutManager::GetPhotoScale()
 void WindowLayoutManager::SetSingleWindowLayout()
 {
 	currentWindowLayoutMode = singleWindowLayoutMode;
-	numberOfPhotosPerWindow = 1;
+	_numberOfPhotosPerWindow = 1;
 
 	if (windowLayoutMap.count(currentWindowLayoutMode) == false)
 	{
@@ -27,7 +27,7 @@ void WindowLayoutManager::SetSingleWindowLayout()
 void WindowLayoutManager::SetDoubleWindowLayout()
 {
 	currentWindowLayoutMode = doubleWindowLayoutMode;
-	numberOfPhotosPerWindow = 2;
+	_numberOfPhotosPerWindow = 2;
 
 	if (windowLayoutMap.count(currentWindowLayoutMode) == false)
 	{

@@ -15,6 +15,7 @@ namespace Drawable
 			enum PhotoCycleStyle
 			{
 				CYCLE_RIGHT,
+				CYCLE_RIGHT_2,
 				CYCLE_LEFT,
 				CYCLE_RANDOM,
 			};

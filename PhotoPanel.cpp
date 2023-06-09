@@ -30,8 +30,6 @@ void Drawable::PhotoPanel::SetUpPhotoPanel()
 		_barleyPhotoMaps[photoIndex].LoadSprite(path_string);
 		_allRandomPhotosVector.push_back(photoIndex);
 		_remainingRandomPhotosVector.push_back(photoIndex);
-		//_windowLayoutManager.SetPhotoInitialPositionAndScale(_barleyPhotoMaps[photoIndex]); 
-
 		photoIndex++;
 	}
 
@@ -54,23 +52,26 @@ void Drawable::PhotoPanel::StopCyclePhotosByTime()
 
 void Drawable::PhotoPanel::ManuallyCyclePhotos(bool cycleRight)
 {
-	if (cycleRight)
+	_currentBarleyPhotos.clear();
+
+	int numOfPhotosNeeded = _windowLayoutManager.GetNumerOfPhotosPerWindow();
+
+	for (int i = 0; i < numOfPhotosNeeded; i++)
 	{
-		_currentBarleyPhotoIndex++;
-		_currentBarleyPhotoIndex = _currentBarleyPhotoIndex >= _barleyPhotoMapSize ? 0 : _currentBarleyPhotoIndex;
+		if (cycleRight)
+		{
+			_currentBarleyPhotoIndex++;
+			_currentBarleyPhotoIndex = _currentBarleyPhotoIndex >= _barleyPhotoMapSize ? 0 : _currentBarleyPhotoIndex;
+		}
+		else
+		{
+			_currentBarleyPhotoIndex--;
+			_currentBarleyPhotoIndex = _currentBarleyPhotoIndex < 0 ? _barleyPhotoMapSize - 1 : _currentBarleyPhotoIndex;
+		}
+
+		_windowLayoutManager.SetPhotoInitialPositionAndScale(_barleyPhotoMaps[_currentBarleyPhotoIndex]);
+		_currentBarleyPhotos.push_back(_barleyPhotoMaps[_currentBarleyPhotoIndex]);
 	}
-	else
-	{
-		_currentBarleyPhotoIndex--;
-		_currentBarleyPhotoIndex = _currentBarleyPhotoIndex < 0 ? _barleyPhotoMapSize - 1 : _currentBarleyPhotoIndex;
-	}
-
-
-	_currentBarleyPhotos.clear(); 
-
-	_windowLayoutManager.SetPhotoInitialPositionAndScale(_barleyPhotoMaps[_currentBarleyPhotoIndex]);
-
-	_currentBarleyPhotos.push_back(_barleyPhotoMaps[_currentBarleyPhotoIndex]);
 
 	ResetPanelSprites();
 }
@@ -83,7 +84,9 @@ void Drawable::PhotoPanel::ManuallyCyclePhotos(bool cycleRight)
 
 void Drawable::PhotoPanel::RandomlyCyclePhoto()
 {
-	for (int i = 0; i < _windowLayoutManager.numberOfPhotosPerWindow; i++)
+	_currentBarleyPhotos.clear();
+
+	for (int i = 0; i < _windowLayoutManager.GetNumerOfPhotosPerWindow(); i++)
 	{
 		RandomlyCyclePhotoHelper();
 	}
@@ -104,7 +107,6 @@ void Drawable::PhotoPanel::RandomlyCyclePhotoHelper()
 	_remainingRandomPhotosVector.erase(_remainingRandomPhotosVector.begin() + randomIndex);
 	_windowLayoutManager.SetPhotoInitialPositionAndScale(_barleyPhotoMaps[selectedPhoto]);
 	_currentBarleyPhotos.push_back(_barleyPhotoMaps[selectedPhoto]);
-	//_currentBarleyPhotos.push_back(_barleyPhotoMaps[1]);
 }
 
 
@@ -141,12 +143,10 @@ void Drawable::PhotoPanel::MovePanelPosition(sf::Vector2f panelPositionDirection
 {
 	MovePanelPosition(panelPositionDirections);
 
-
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
 	{
 		_currentBarleyPhotos[i].SetSpritePosition(panelPositionDirections);
 	}
-
 
 	ResetPanelSprites();
 }
@@ -155,7 +155,6 @@ void Drawable::PhotoPanel::ResetPanelSprites()
 {
 	_panelSprites.clear();
 	_panelSprites.push_back(_panelSprite);
-	//_panelSprites.push_back(_currentBarleyPhoto.barleySprite);
 
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
 	{

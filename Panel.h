@@ -9,7 +9,7 @@ namespace Drawable
 	{
 		protected:
 			
-			std::string _fontDirectoryPath = "C:\\Users\\15408\\Desktop\\MarianneFonts\\arial.ttf";
+			std::string _fontDirectoryPath = "C:\\Users\\15408\\Desktop\\PhotoProject\\MarianneFonts\\arial.ttf";
 
 			std::list<sf::Sprite> _panelSprites;
 
@@ -24,7 +24,7 @@ namespace Drawable
 			sf::Color _panelColor;
 			sf::Text _panelText;
 			sf::Font _panelFontArial;
-			std::string _panelString;
+			std::string _panelString = "Hello";
 			sf::Color _panelTextColor = sf::Color::Black;
 			int _panelID = -1;
 

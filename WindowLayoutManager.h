@@ -7,6 +7,9 @@
 
 class WindowLayoutManager
 {
+	private: 
+		int _numberOfPhotosPerWindow = 0;
+
 	public:
 
 		int windowWidth;
@@ -25,12 +28,12 @@ class WindowLayoutManager
 		};
 
 		WindowLayoutMode currentWindowLayoutMode = noWindowLayoutMode;
-		int numberOfPhotosPerWindow = 0;
-
+		
 		std::map<int, WindowLayout*> windowLayoutMap;
 
 		void SetSingleWindowLayout();
 		void SetDoubleWindowLayout();
 		void SetPhotoInitialPositionAndScale(BarleyPhoto &barleyPhoto);
 		float GetPhotoScale();
+		int GetNumerOfPhotosPerWindow() { return _numberOfPhotosPerWindow; }
 };

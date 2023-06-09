@@ -79,6 +79,7 @@ void WindowManager::UpdateWindowManager()
 		{
 			//(*it)->UpdatePanelTimers();
 			AddSpritesToDrawList((*it)->GetInputPanelSprites(), 1);
+			AddTextToDrawList((*it)->GetPanelText(), 2);
 			(*it)->UpdatePanelTimers();
 		}
 
