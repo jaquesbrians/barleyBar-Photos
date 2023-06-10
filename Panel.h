@@ -31,11 +31,13 @@ namespace Drawable
 
 			bool _isHidden = false;
 
-			void SetUpPanel();
+			//void SetUpPanel();
 
 		protected:
 
 		public: 
+
+			void SetUpPanel();
 
 			Panel();
 			Panel(sf::Vector2f size, sf::Vector2f position, sf::Color color);

@@ -17,7 +17,6 @@ namespace Drawable
 			enum ButtonPositions { Left, Center, Right };
 
 		protected :
-			int _defaultButtonSpace = 10;
 			ButtonPositions _defaultButtonPositions = Center;
 			sf::Vector2f _defaultInputPanelSize = sf::Vector2f(500.0f, 500.0f);
 			sf::Vector2f _defaultCornerExitButtonSize = sf::Vector2f(30.0f, 30.0f);
@@ -27,6 +26,7 @@ namespace Drawable
 			std::list<Button> _standardInputButtons;
 			std::map<Button*, ButtonFunction> _buttonFunctionMap;
 			ExitButton _cornerExitButton;
+			int _defaultButtonSpace = 10;
 
 		private:
 

@@ -42,6 +42,16 @@ Drawable::InputPanel::InputPanel(sf::Vector2f mainPanelSize, sf::Vector2f mainPa
 		_standardInputButtons.push_back(button);
 	}
 
+	//Interesting development - figure out a better way to set up buttons due to font's loosing scope.
+	//Meaning Maybe create normal buttons and then configure them once they are in the list, instead of SeT Up Panel Twice
+	//20230610
+
+	std::list<Button>::iterator it;
+	for (it = _standardInputButtons.begin(); it != _standardInputButtons.end(); ++it)
+	{
+		it->SetUpPanel();
+	}
+
 	SetUpPanel();
 	InitializeInputPanelSprites();
 }
