@@ -78,7 +78,7 @@ void WindowManager::UpdateWindowManager()
 		for (std::list<InputPanel*>::iterator it = _inputPanels.begin(); it != _inputPanels.end(); it++)
 		{
 			AddSpritesToDrawList((*it)->GetInputPanelSprites(), 1);
-			AddTextToDrawList((*it)->GetPanelText(), 2);
+			AddTextsToDrawList((*it)->GetInputPanelTexts(), 2);
 			(*it)->UpdatePanelTimers();
 		}
 
@@ -140,6 +140,14 @@ void WindowManager::AddSpritesToDrawList(std::list<sf::Sprite> drawSprites, int 
 	for (std::list<sf::Sprite>::iterator it = drawSprites.begin(); it != drawSprites.end(); it++)
 	{
 		_spriteDrawList.push_back(*it);
+	}
+}
+
+void WindowManager::AddTextsToDrawList(std::list<sf::Text> drawTexts, int priority)
+{
+	for (std::list<sf::Text>::iterator it = drawTexts.begin(); it != drawTexts.end(); it++)
+	{
+		_textDrawList.push_back(*it);
 	}
 }
 

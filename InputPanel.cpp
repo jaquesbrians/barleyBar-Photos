@@ -37,7 +37,7 @@ Drawable::InputPanel::InputPanel(sf::Vector2f mainPanelSize, sf::Vector2f mainPa
 	for (int i = 0; i < numberOfButtons; i++)
 	{
 		Button button(_defaultStandardInputButtonSize, sf::Vector2f(0.0f, 0.0f), sf::Color::Blue,
-			sf::Color::Transparent, sf::Color::Transparent, sf::Color::Transparent, sf::Color::Black, "Yo");
+			sf::Color::Transparent, sf::Color::Transparent, sf::Color::Transparent, sf::Color::Black, "Ha");
 
 		_standardInputButtons.push_back(button);
 	}
@@ -63,6 +63,7 @@ void Drawable::InputPanel::ContainAllPanelSprites()
 	{
 		_panelSprites.push_back(_cornerExitButton.GetPanelSprite());
 		_panelTexts.push_back(_cornerExitButton.GetPanelText());
+
 		std::list<Button>::iterator it;
 		for (it = _standardInputButtons.begin(); it != _standardInputButtons.end(); ++it)
 		{
@@ -125,9 +126,9 @@ std::list<sf::Sprite> Drawable::InputPanel::GetInputPanelSprites()
 	return _panelSprites;  
 }
 
-std::list<std::string> Drawable::InputPanel::GetInputPanelStrings()
+std::list<sf::Text> Drawable::InputPanel::GetInputPanelTexts()
 {
-	return _panelStrings;
+	return _panelTexts;
 }
 
 void Drawable::InputPanel::HidePanel(sf::Vector2f hiddenPanelPosition)
@@ -195,7 +196,6 @@ bool Drawable::InputPanel::OnPanelLeftMouseClickedUp(sf::Vector2i clickPosition)
 		_panelSprite.setColor(_panelColor);
 		buttonClicked = true;
 	}
-	
 	
 	ContainAllPanelSprites();
 

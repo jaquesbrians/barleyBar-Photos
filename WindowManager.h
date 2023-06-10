@@ -10,24 +10,21 @@ class WindowManager
 {
 	private:
 		static WindowManager* Instance;
-		int _currentPanelIDCount = 0;
+
+		ColorChanger _currentBackGroundColor = sf::Color::White;
+		InputPanel* _currentSeletedPanel;
 		std::map<InputPanel*, int> _hiddenInputPanelsMap;
 		sf::Vector2f _hiddenPanelScale = sf::Vector2f(0.10f, 0.05f);
 		sf::Vector2f _currentHiddenPanelPosition = sf::Vector2f(0, 0);
-		int _currentNumberOfHiddenPanels = 0;
-	
-		int _windowWidth = 0;
-		int _windowHeight = 0;
+		std::list<InputPanel*> _inputPanels;
+		std::list<sf::Sprite> _spriteDrawList;
+		std::list<sf::Text> _textDrawList;
 		sf::Event _event;
 		std::string _windowTitle = "Marianne";
-
-		ColorChanger _currentBackGroundColor = sf::Color::White;
-
-		std::list<sf::Sprite> _spriteDrawList;	
-		std::list<sf::Text> _textDrawList;
-		std::list<InputPanel*> _inputPanels;
-		InputPanel* _currentSeletedPanel;
-
+		int _currentNumberOfHiddenPanels = 0;
+		int _currentPanelIDCount = 0;
+		int _windowWidth = 0;
+		int _windowHeight = 0;
 		bool _closeWindow = false;
 
 	public:
@@ -43,6 +40,7 @@ class WindowManager
 		void AddSpriteToDrawList(sf::Sprite, int priority);
 		void AddTextToDrawList(sf::Text TextToDraw, int priority);
 		void AddSpritesToDrawList(std::list<sf::Sprite> drawSprites, int priority);
+		void AddTextsToDrawList(std::list<sf::Text> drawTexts, int priority);
 		void CheckInteractionWithLeftMouseClickUp(sf::Vector2i position);
 		void CheckInteractionWithLeftMouseHoldDown(sf::Vector2i position, sf::Vector2i previousPosition);
 

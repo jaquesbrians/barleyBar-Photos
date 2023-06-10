@@ -20,7 +20,6 @@ MarianneManager* MarianneManager::GetInstance()
 
 int MarianneManager::StartMarianneManager()
 {
-	//Trial Commit 2021
 	StartAllManagers();
 
 	while (runMarianneManager)
