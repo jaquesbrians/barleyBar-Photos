@@ -81,10 +81,8 @@ void Drawable::PhotoPanel::ManuallyCyclePhotos(bool cycleRight)
 	ResetPanelSprites();
 }
 
-//Things to do for tomorrow -  20230609
-// changing layouts (single and double) within buttons in game
-// gotta get text up and running at some point so buttons are easy to see what they do (look into hello on normal panel and why that is working?)
-//check timing swapping again
+//Things to do for tomorrow -  20230611
+// Start thinking about how to make your photos slowly move during long periods of staying still, like a screen savor.
 
 void Drawable::PhotoPanel::RandomlyCyclePhoto()
 {
