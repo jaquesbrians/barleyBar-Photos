@@ -37,7 +37,7 @@ Drawable::InputPanel::InputPanel(sf::Vector2f mainPanelSize, sf::Vector2f mainPa
 	for (int i = 0; i < numberOfButtons; i++)
 	{
 		Button button(_defaultStandardInputButtonSize, sf::Vector2f(0.0f, 0.0f), sf::Color::Blue,
-			sf::Color::Transparent, sf::Color::Transparent, sf::Color::Transparent, sf::Color::Black, "Ha");
+			sf::Color::Transparent, sf::Color::Transparent, sf::Color::Transparent, sf::Color::Black, "Ha", true);
 
 		_standardInputButtons.push_back(button);
 	}

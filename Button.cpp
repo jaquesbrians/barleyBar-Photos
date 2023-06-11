@@ -27,7 +27,8 @@ Drawable::Button::Button(
 	sf::Color buttonOffColor,
 	sf::Color buttonHoverColor,
 	sf::Color buttonTextColor,
-	std::string buttonText)
+	std::string buttonText,
+	bool pauseSettingUpPanel)
 {
 	_panelSize = size;
 	_panelPosition = position;
@@ -38,7 +39,10 @@ Drawable::Button::Button(
 	_buttonString = buttonText;
 	_panelString = _buttonString;
 
-	SetUpPanel();
+	if (pauseSettingUpPanel == false)
+	{
+		SetUpPanel();
+	}	
 }
 
 bool Drawable::Button::OnPanelLeftMouseClickedUp(sf::Vector2i clickPosition)

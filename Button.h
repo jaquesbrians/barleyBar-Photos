@@ -31,7 +31,8 @@ namespace Drawable
 				sf::Color buttonOffColor = sf::Color::Transparent,
 				sf::Color buttonHoverColor = sf::Color::Transparent,
 				sf::Color buttonTextColor = sf::Color::Black,
-				std::string buttonText = "BUTTON");
+				std::string buttonText = "BUTTON",
+				bool pauseSettingUpPanel = false);
 
 			bool OnPanelLeftMouseClickedUp(sf::Vector2i clickPosition);
 
