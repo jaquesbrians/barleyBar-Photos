@@ -62,7 +62,20 @@ class StartingInputPanelButton4 : public ButtonFunction
     {
         if (startingInputPanel)
         {
-            startingInputPanel->_previewPhotoPanel.StopCyclePhotosByTime();
+            startingInputPanel->_previewPhotoPanel.UpdateWindowLayoutMode(WindowLayoutManager::WindowLayoutMode::singleWindowLayoutMode);
+        }
+    }
+};
+
+class StartingInputPanelButton5 : public ButtonFunction
+{
+    public:
+    Drawable::StartingInputPanel* startingInputPanel;
+    public: void Execute()
+    {
+        if (startingInputPanel)
+        {
+            startingInputPanel->_previewPhotoPanel.UpdateWindowLayoutMode(WindowLayoutManager::WindowLayoutMode::doubleWindowLayoutMode);
         }
     }
 };
@@ -82,23 +95,27 @@ Drawable::StartingInputPanel::StartingInputPanel(sf::Vector2f mainPanelSize, sf:
     StartingInputPanelButton2* startingInputPanelButton2 = new StartingInputPanelButton2;
     StartingInputPanelButton3* startingInputPanelButton3 = new StartingInputPanelButton3;
     StartingInputPanelButton4* startingInputPanelButton4 = new StartingInputPanelButton4;
+    StartingInputPanelButton5* startingInputPanelButton5 = new StartingInputPanelButton5;
 
     auto buttonIterator = _standardInputButtons.begin();
-    buttonIterator->SetButtonFunction(startingInputPanelButton0);
+    buttonIterator->SetButtonFunction(startingInputPanelButton0, "Forward");
     std::advance(buttonIterator, 1);
-    buttonIterator->SetButtonFunction(startingInputPanelButton1);
+    buttonIterator->SetButtonFunction(startingInputPanelButton1, "Backward");
     std::advance(buttonIterator, 1);
-    buttonIterator->SetButtonFunction(startingInputPanelButton2);
+    buttonIterator->SetButtonFunction(startingInputPanelButton2, "Auto");
     std::advance(buttonIterator, 1);
-    buttonIterator->SetButtonFunction(startingInputPanelButton3);
+    buttonIterator->SetButtonFunction(startingInputPanelButton3, "Stop Auto");
     std::advance(buttonIterator, 1);
-    buttonIterator->SetButtonFunction(startingInputPanelButton4);
+    buttonIterator->SetButtonFunction(startingInputPanelButton4, "Single");
+    std::advance(buttonIterator, 1);
+    buttonIterator->SetButtonFunction(startingInputPanelButton5, "Double");
 
     startingInputPanelButton0->startingInputPanel = this;
     startingInputPanelButton1->startingInputPanel = this;
     startingInputPanelButton2->startingInputPanel = this;
     startingInputPanelButton3->startingInputPanel = this;
     startingInputPanelButton4->startingInputPanel = this;
+    startingInputPanelButton5->startingInputPanel = this;
 
     SetUpPreviewPhotoPanel();
     ContainAllPanelSprites();

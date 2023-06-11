@@ -41,6 +41,7 @@ namespace Drawable
 			~PhotoPanel();
 
 			void SetUpPhotoPanel();
+			void UpdateWindowLayoutMode(WindowLayoutManager::WindowLayoutMode updatedWindowLayoutMode);
 			void CyclePhotosByTime(float timeInterval = 3.0f, bool chooseRandom = false, bool chooseLeft = false);
 			void StopCyclePhotosByTime();
 			void ManuallyCyclePhotos(bool cycleRight = true);

@@ -45,6 +45,14 @@ Drawable::Button::Button(
 	}	
 }
 
+void Drawable::Button::SetButtonFunction(ButtonFunction* buttonFunction, std::string updatedButtonText)
+{
+	_buttonFunction = buttonFunction;
+	_buttonString = updatedButtonText;
+	UpdatePanelText(_buttonString);
+}
+
+
 bool Drawable::Button::OnPanelLeftMouseClickedUp(sf::Vector2i clickPosition)
 {
 	if (_marianneMath.IsPointInRectangle(_panelPosition, _panelSize, clickPosition))

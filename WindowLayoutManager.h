@@ -31,6 +31,7 @@ class WindowLayoutManager
 		
 		std::map<int, WindowLayout*> windowLayoutMap;
 
+		void UpdateWindowLayout(WindowLayoutMode windowLayoutMode);
 		void SetSingleWindowLayout();
 		void SetDoubleWindowLayout();
 		void SetPhotoInitialPositionAndScale(BarleyPhoto &barleyPhoto);

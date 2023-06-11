@@ -18,6 +18,7 @@ namespace Drawable
 
 			sf::Uint8* _panelPixels;
 			sf::Vector2f _panelPosition;
+			sf::Vector2f _textPosition;
 			sf::Vector2f _hiddenPanelPosition;
 			sf::Vector2f _panelSize;
 			sf::Sprite _panelSprite;
@@ -28,16 +29,11 @@ namespace Drawable
 			std::string _panelString = "Hello";
 			sf::Color _panelTextColor = sf::Color::Black;
 			int _panelID = -1;
-
 			bool _isHidden = false;
-
-			//void SetUpPanel();
 
 		protected:
 
 		public: 
-
-			void SetUpPanel();
 
 			Panel();
 			Panel(sf::Vector2f size, sf::Vector2f position, sf::Color color);
@@ -47,7 +43,10 @@ namespace Drawable
 			virtual void MovePanelPosition(sf::Vector2f panelPositionDirections);
 			virtual void UpdatePanelTimers();
 
+			void SetUpPanel();
 			void SetPanelSpritePosition(sf::Vector2f newSpritePosition);
+			void UpdatePanelText(std::string updatedPanelString);
+			void UpdateTextPosition();
 
 			sf::Vector2f GetPanelPosition() { return _panelPosition; }
 			sf::Vector2f GetHiddenPanelPosition() { return _hiddenPanelPosition; }

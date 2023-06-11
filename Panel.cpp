@@ -50,21 +50,40 @@ void Drawable::Panel::SetUpPanel()
 		_panelText.setString(_panelString);
 		_panelText.setFont(_panelFontArial);
 		_panelText.setFillColor(_panelTextColor);
+		_panelText.setStyle(sf::Text::Bold);
 
 		float textWidth = _panelText.getLocalBounds().width;
 		float textHeight = _panelText.getLocalBounds().height;
 
-		_panelText.setPosition(
-			(_panelSize.x * 0.5f) - (textWidth * 0.5f) + _panelPosition.x
-			, (_panelSize.y * 0.5f) - (textHeight * 0.5f) + _panelPosition.y);
-		_panelText.setStyle(sf::Text::Bold);
+		_textPosition.x = (_panelSize.x * 0.5f) - (textWidth * 0.5f) + _panelPosition.x;
+		_textPosition.y = (_panelSize.y * 0.5f) - (textHeight * 0.5f) + _panelPosition.y;
+		_panelText.setPosition(_textPosition);
 	}
+}
+
+void Drawable::Panel::UpdatePanelText(std::string updatedPanelString)
+{
+	_panelString = updatedPanelString;
+	_panelText.setString(_panelString);
+	UpdateTextPosition();
+}
+
+
+void Drawable::Panel::UpdateTextPosition()
+{
+	float textWidth = _panelText.getLocalBounds().width;
+	float textHeight = _panelText.getLocalBounds().height;
+
+	_textPosition.x = (_panelSize.x * 0.5f) - (textWidth * 0.5f) + _panelPosition.x;
+	_textPosition.y = (_panelSize.y * 0.5f) - (textHeight * 0.5f) + _panelPosition.y;
+	_panelText.setPosition(_textPosition);
 }
 
 void Drawable::Panel::SetPanelSpritePosition(sf::Vector2f newSpritePosition)
 {
 	_panelPosition = newSpritePosition;
 	_panelSprite.setPosition(newSpritePosition);
+	UpdateTextPosition();
 }
 
 void Drawable::Panel::MovePanelPosition(sf::Vector2f panelPositionDirections)
@@ -72,11 +91,11 @@ void Drawable::Panel::MovePanelPosition(sf::Vector2f panelPositionDirections)
 	_panelPosition.x = _panelPosition.x + panelPositionDirections.x;
 	_panelPosition.y = _panelPosition.y + panelPositionDirections.y;
 	_panelSprite.setPosition(_panelPosition);
+	UpdateTextPosition();
 }
 
 void Drawable::Panel::UpdatePanelTimers()
 {
-	int eight = 8;
 }
 
 

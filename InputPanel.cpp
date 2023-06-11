@@ -8,7 +8,7 @@ Drawable::InputPanel::~InputPanel()
 Drawable::InputPanel::InputPanel()
 	:
 	_cornerExitButton(_defaultCornerExitButtonSize, sf::Vector2f(0.0f, 0.0f), sf::Color::Red,
-		sf::Color::Transparent, sf::Color::Transparent, sf::Color::Transparent, sf::Color::Black, "Yo")
+		sf::Color::Transparent, sf::Color::Transparent, sf::Color::Transparent, sf::Color::Black, "X")
 {
 	_panelSize = _defaultInputPanelSize;
 	_panelPosition = _defaultInputPanelPosition;
@@ -27,7 +27,7 @@ Drawable::InputPanel::InputPanel(sf::Vector2f mainPanelSize, sf::Vector2f mainPa
 	int numberOfButtons, ButtonPositions buttonPositions)
 	:
 	_cornerExitButton(_defaultCornerExitButtonSize, sf::Vector2f(0.0f, 0.0f), sf::Color::Red,
-	sf::Color::Transparent, sf::Color::Transparent, sf::Color::Transparent, sf::Color::Black, "Yo")
+	sf::Color::Transparent, sf::Color::Transparent, sf::Color::Transparent, sf::Color::Black, "X")
 {
 	_panelSize = mainPanelSize;
 	_panelPosition = mainPanelPosition;
@@ -37,7 +37,7 @@ Drawable::InputPanel::InputPanel(sf::Vector2f mainPanelSize, sf::Vector2f mainPa
 	for (int i = 0; i < numberOfButtons; i++)
 	{
 		Button button(_defaultStandardInputButtonSize, sf::Vector2f(0.0f, 0.0f), sf::Color::Blue,
-			sf::Color::Transparent, sf::Color::Transparent, sf::Color::Transparent, sf::Color::Black, "Ha", true);
+			sf::Color::Transparent, sf::Color::Transparent, sf::Color::Transparent, sf::Color::Red, "Nothing Yet", true);
 
 		_standardInputButtons.push_back(button);
 	}

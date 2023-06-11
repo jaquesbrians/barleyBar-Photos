@@ -12,6 +12,19 @@ float WindowLayoutManager::GetPhotoScale()
 
 #pragma region SetCurrentLayoutRegion
 
+void WindowLayoutManager::UpdateWindowLayout(WindowLayoutMode windowLayoutMode)
+{
+	switch (windowLayoutMode)
+	{
+		case singleWindowLayoutMode:
+			SetSingleWindowLayout();
+			break;
+		case doubleWindowLayoutMode:
+			SetDoubleWindowLayout();
+			break;
+	}
+}
+
 void WindowLayoutManager::SetSingleWindowLayout()
 {
 	currentWindowLayoutMode = singleWindowLayoutMode;

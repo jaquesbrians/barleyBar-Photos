@@ -38,6 +38,11 @@ void Drawable::PhotoPanel::SetUpPhotoPanel()
 	RandomlyCyclePhoto();
 }
 
+void Drawable::PhotoPanel::UpdateWindowLayoutMode(WindowLayoutManager::WindowLayoutMode updatedWindowLayoutMode)
+{
+	_windowLayoutManager.UpdateWindowLayout(updatedWindowLayoutMode);
+}
+
 
 void Drawable::PhotoPanel::CyclePhotosByTime(float timeInterval, bool chooseRandom, bool chooseLeft)
 {

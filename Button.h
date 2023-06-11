@@ -36,10 +36,7 @@ namespace Drawable
 
 			bool OnPanelLeftMouseClickedUp(sf::Vector2i clickPosition);
 
-			void SetButtonFunction(ButtonFunction* buttonFunction)
-			{
-				_buttonFunction = buttonFunction;
-			}
+			void SetButtonFunction(ButtonFunction* buttonFunction, std::string updatedButtonText);
 	};
 }
 
