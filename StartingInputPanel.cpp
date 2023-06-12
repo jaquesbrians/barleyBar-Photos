@@ -160,10 +160,10 @@ void Drawable::StartingInputPanel::UpdatePanelTimers()
     }
 }
 
-void Drawable::StartingInputPanel::MovePanelPosition(sf::Vector2f panelPositionDirections)
+void Drawable::StartingInputPanel::DragPanelPosition(sf::Vector2f panelPositionDirections)
 {
-    this->InputPanel::MovePanelPosition(panelPositionDirections);
-    _previewPhotoPanel.PhotoPanel::MovePanelPosition(panelPositionDirections);
+    this->InputPanel::DragPanelPosition(panelPositionDirections);
+    _previewPhotoPanel.PhotoPanel::DragPanelPosition(panelPositionDirections);
 }
 
 

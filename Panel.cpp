@@ -86,7 +86,7 @@ void Drawable::Panel::SetPanelSpritePosition(sf::Vector2f newSpritePosition)
 	UpdateTextPosition();
 }
 
-void Drawable::Panel::MovePanelPosition(sf::Vector2f panelPositionDirections)
+void Drawable::Panel::DragPanelPosition(sf::Vector2f panelPositionDirections)
 {
 	_panelPosition.x = _panelPosition.x + panelPositionDirections.x;
 	_panelPosition.y = _panelPosition.y + panelPositionDirections.y;

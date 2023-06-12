@@ -156,9 +156,9 @@ void Drawable::PhotoPanel::UpdateMovingPhotos()
 }
 
 //Might want to rename this function/procedure to be DragPanelPosition (since that is what this is doing)?
-void Drawable::PhotoPanel::MovePanelPosition(sf::Vector2f panelPositionDirections)
+void Drawable::PhotoPanel::DragPanelPosition(sf::Vector2f panelPositionDirections)
 {
-	MovePanelPosition(panelPositionDirections);
+	DragPanelPosition(panelPositionDirections);
 
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
 	{

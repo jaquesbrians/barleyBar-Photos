@@ -228,12 +228,12 @@ bool Drawable::InputPanel::OnPanelLeftMouseHoldDown(sf::Vector2i clickPosition, 
 		float x = clickPosition.x - previousClickPosition.x;
 		float y = clickPosition.y - previousClickPosition.y;
 		sf::Vector2f movePanelDirections(x, y);
-		MovePanelPosition(movePanelDirections);
-		_cornerExitButton.MovePanelPosition(movePanelDirections);
+		DragPanelPosition(movePanelDirections);
+		_cornerExitButton.DragPanelPosition(movePanelDirections);
 		std::list<Button>::iterator it;
 		for (it = _standardInputButtons.begin(); it != _standardInputButtons.end(); ++it)
 		{
-			it->MovePanelPosition(movePanelDirections);
+			it->DragPanelPosition(movePanelDirections);
 		}
 
 		ContainAllPanelSprites();

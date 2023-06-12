@@ -18,6 +18,6 @@ namespace Drawable
 
 			virtual void ContainAllPanelSprites();
 			virtual void UpdatePanelTimers();
-			virtual void MovePanelPosition(sf::Vector2f panelPositionDirections);
+			virtual void DragPanelPosition(sf::Vector2f panelPositionDirections);
 	};
 }

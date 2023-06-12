@@ -53,7 +53,7 @@ namespace Drawable
 			
 			virtual void UpdatePanelTimers();
 			virtual void UpdateMovingPhotos();
-			virtual void MovePanelPosition(sf::Vector2f panelPositionDirections);
+			virtual void DragPanelPosition(sf::Vector2f panelPositionDirections);
 
 			std::list<sf::Sprite> GetPhotoPanelSprites();
 
