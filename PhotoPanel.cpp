@@ -141,6 +141,19 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 	}
 }
 
+void Drawable::PhotoPanel::UpdateMovingPhotos()
+{
+	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
+	{
+		/*if (_currentBarleyPhotos[i].barleySprite.getPosition().x + 1 < _panelSize.x - (_currentBarleyPhotos[i].textureSize.x * _currentBarleyPhotos[i].barleySprite.getScale().x))
+		{
+			_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(_currentBarleyPhotos[i].spriteWidthPosition++, _currentBarleyPhotos[i].spriteHeightPosition));
+			//_currentBarleyPhoto.barleySprite.setPosition(Vector2f(_currentBarleyPhoto.spriteWidthPosition++, _currentBarleyPhoto.spriteHeightPosition));
+		}*/
+	}
+}
+
+//Might want to rename this function/procedure to be DragPanelPosition (since that is what this is doing)?
 void Drawable::PhotoPanel::MovePanelPosition(sf::Vector2f panelPositionDirections)
 {
 	MovePanelPosition(panelPositionDirections);

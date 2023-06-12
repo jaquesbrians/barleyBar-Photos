@@ -35,6 +35,7 @@ namespace Drawable
 			int _barleyPhotoMapSize = 0;
 			int _currentBarleyPhotoIndex = 0;
 			bool _cycleByTime = false;
+			bool _photosAreMoving = true;
 
 		public:
 			PhotoPanel(sf::Vector2f size, sf::Vector2f position, sf::Color color);
@@ -48,8 +49,10 @@ namespace Drawable
 			void RandomlyCyclePhoto();
 			void RandomlyCyclePhotoHelper();
 			bool GetIsCyclyingByTime() { return _cycleByTime; }
+			bool ArePhotosMoving() { return _photosAreMoving; }
 			
 			virtual void UpdatePanelTimers();
+			virtual void UpdateMovingPhotos();
 			virtual void MovePanelPosition(sf::Vector2f panelPositionDirections);
 
 			std::list<sf::Sprite> GetPhotoPanelSprites();

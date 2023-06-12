@@ -153,6 +153,11 @@ void Drawable::StartingInputPanel::UpdatePanelTimers()
         _previewPhotoPanel.PhotoPanel::UpdatePanelTimers();
         ContainAllPanelSprites();
     }
+
+    if (_previewPhotoPanel.ArePhotosMoving())
+    {
+        _previewPhotoPanel.PhotoPanel::UpdateMovingPhotos();
+    }
 }
 
 void Drawable::StartingInputPanel::MovePanelPosition(sf::Vector2f panelPositionDirections)
