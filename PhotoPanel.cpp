@@ -141,6 +141,8 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 	}
 }
 
+//20230612 - Figure out what in the world is going on here and lets gets photos moving!
+
 void Drawable::PhotoPanel::UpdateMovingPhotos()
 {
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
