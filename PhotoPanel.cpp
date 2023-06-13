@@ -18,8 +18,8 @@ void Drawable::PhotoPanel::SetUpPhotoPanel()
 	_windowLayoutManager.windowHeight = GetPanelSize().y;
 	_windowLayoutManager.windowPositionX = GetPanelPosition().x;
 	_windowLayoutManager.windowPositionY = GetPanelPosition().y;
-	//_windowLayoutManager.SetSingleWindowLayout();
-	_windowLayoutManager.SetDoubleWindowLayout();
+	_windowLayoutManager.SetSingleWindowLayout();
+	//_windowLayoutManager.SetDoubleWindowLayout();
 
 	int photoIndex = 0;
 	for (const auto& entry : std::filesystem::directory_iterator(_directoryPath))
@@ -147,11 +147,20 @@ void Drawable::PhotoPanel::UpdateMovingPhotos()
 {
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
 	{
-		/*if (_currentBarleyPhotos[i].barleySprite.getPosition().x + 1 < _panelSize.x - (_currentBarleyPhotos[i].textureSize.x * _currentBarleyPhotos[i].barleySprite.getScale().x))
+		//float positionX = _currentBarleyPhotos[i].spriteWidthPosition++;
+		//float positionY = _currentBarleyPhotos[i].spriteHeightPosition;
+		//_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(1, 0));
+		//ResetPanelSprites();
+
+		if (_currentBarleyPhotos[i].barleySprite.getPosition().x + 1 < _panelSize.x - (_currentBarleyPhotos[i].textureSize.x * _currentBarleyPhotos[i].barleySprite.getScale().x))
 		{
-			_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(_currentBarleyPhotos[i].spriteWidthPosition++, _currentBarleyPhotos[i].spriteHeightPosition));
+			//_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(_currentBarleyPhotos[i].spriteWidthPosition++, _currentBarleyPhotos[i].spriteHeightPosition));
+			float positionX = _currentBarleyPhotos[i].spriteWidthPosition++;
+			float positionY = _currentBarleyPhotos[i].spriteHeightPosition;
+			_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(1, 0));
+			ResetPanelSprites();
 			//_currentBarleyPhoto.barleySprite.setPosition(Vector2f(_currentBarleyPhoto.spriteWidthPosition++, _currentBarleyPhoto.spriteHeightPosition));
-		}*/
+		}
 	}
 }
 

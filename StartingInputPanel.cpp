@@ -136,10 +136,10 @@ void Drawable::StartingInputPanel::ContainAllPanelSprites()
 
     if (_isHidden == false)
     {
-        std::list<sf::Sprite> coyPanelSprites = _previewPhotoPanel.GetPhotoPanelSprites();
+        std::list<sf::Sprite> copyPanelSprites = _previewPhotoPanel.GetPhotoPanelSprites();
         std::list<sf::Sprite>::iterator it;
-        for (it = coyPanelSprites.begin();
-            it != coyPanelSprites.end(); ++it)
+        for (it = copyPanelSprites.begin();
+            it != copyPanelSprites.end(); ++it)
         {
             _panelSprites.push_back(*it);
         }
@@ -157,6 +157,7 @@ void Drawable::StartingInputPanel::UpdatePanelTimers()
     if (_previewPhotoPanel.ArePhotosMoving())
     {
         _previewPhotoPanel.PhotoPanel::UpdateMovingPhotos();
+        ContainAllPanelSprites();
     }
 }
 
