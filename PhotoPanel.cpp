@@ -152,7 +152,8 @@ void Drawable::PhotoPanel::UpdateMovingPhotos()
 		//_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(1, 0));
 		//ResetPanelSprites();
 
-		if (_currentBarleyPhotos[i].barleySprite.getPosition().x + 1 < _panelSize.x - (_currentBarleyPhotos[i].textureSize.x * _currentBarleyPhotos[i].barleySprite.getScale().x))
+		//if (_currentBarleyPhotos[i].barleySprite.getPosition().x + 1 < _panelSize.x - (_currentBarleyPhotos[i].textureSize.x * _currentBarleyPhotos[i].barleySprite.getScale().x))
+		if (_currentBarleyPhotos[i].spriteWidthPosition + (_currentBarleyPhotos[i].textureSize.x * .90f) + 1 < _panelSize.x)
 		{
 			//_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(_currentBarleyPhotos[i].spriteWidthPosition++, _currentBarleyPhotos[i].spriteHeightPosition));
 			float positionX = _currentBarleyPhotos[i].spriteWidthPosition++;
