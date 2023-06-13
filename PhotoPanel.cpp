@@ -141,7 +141,7 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 	}
 }
 
-//20230612 - Figure out what in the world is going on here and lets gets photos moving!
+//20230613 - Start doing moving panel the right way and also get it to stop appropriatley against wall
 
 void Drawable::PhotoPanel::UpdateMovingPhotos()
 {
