@@ -147,21 +147,49 @@ void Drawable::PhotoPanel::UpdateMovingPhotos()
 {
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
 	{
-		//float positionX = _currentBarleyPhotos[i].spriteWidthPosition++;
-		//float positionY = _currentBarleyPhotos[i].spriteHeightPosition;
-		//_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(1, 0));
-		//ResetPanelSprites();
+		float panelPositionX = GetPanelPosition().x;
+		float panelSizeX = GetPanelSize().x;
+		float photoTextureSizeX = _currentBarleyPhotos[i].texture.getSize().x;
+		float photoScaleSizeX = _currentBarleyPhotos[i].barleySprite.getScale().x;
+		float photoDisplaySize = photoTextureSizeX * photoScaleSizeX;
 
-		//if (_currentBarleyPhotos[i].barleySprite.getPosition().x + 1 < _panelSize.x - (_currentBarleyPhotos[i].textureSize.x * _currentBarleyPhotos[i].barleySprite.getScale().x))
-		if (_currentBarleyPhotos[i].spriteWidthPosition + (_currentBarleyPhotos[i].textureSize.x * .90f) + 1 < _panelSize.x)
+		if (_currentBarleyPhotos[i].spriteWidthPosition + photoDisplaySize + 1 < panelPositionX + panelSizeX)
 		{
-			//_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(_currentBarleyPhotos[i].spriteWidthPosition++, _currentBarleyPhotos[i].spriteHeightPosition));
 			float positionX = _currentBarleyPhotos[i].spriteWidthPosition++;
 			float positionY = _currentBarleyPhotos[i].spriteHeightPosition;
 			_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(1, 0));
 			ResetPanelSprites();
-			//_currentBarleyPhoto.barleySprite.setPosition(Vector2f(_currentBarleyPhoto.spriteWidthPosition++, _currentBarleyPhoto.spriteHeightPosition));
 		}
+
+		/*if (_moveRight == true)
+		{
+			if (_currentBarleyPhotos[i].spriteWidthPosition + photoDisplaySize + 1 < panelPositionX + panelSizeX)
+			{
+				float positionX = _currentBarleyPhotos[i].spriteWidthPosition++;
+				float positionY = _currentBarleyPhotos[i].spriteHeightPosition;
+				_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(1, 0));
+				ResetPanelSprites();
+			}
+			else
+			{
+				_moveRight = false;
+			}
+		}
+
+		if (_moveRight == false)
+		{
+			if (_currentBarleyPhotos[i].spriteWidthPosition - 1 > panelPositionX)
+			{
+				float positionX = _currentBarleyPhotos[i].spriteWidthPosition--;
+				float positionY = _currentBarleyPhotos[i].spriteHeightPosition;
+				_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(1, 0));
+				ResetPanelSprites();
+			}
+			else
+			{
+				_moveRight = true;
+			}
+		}*/
 	}
 }
 

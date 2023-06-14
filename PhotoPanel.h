@@ -37,6 +37,9 @@ namespace Drawable
 			bool _cycleByTime = false;
 			bool _photosAreMoving = true;
 
+			//temp trial bool
+			bool _moveRight = true;
+
 		public:
 			PhotoPanel(sf::Vector2f size, sf::Vector2f position, sf::Color color);
 			~PhotoPanel();
