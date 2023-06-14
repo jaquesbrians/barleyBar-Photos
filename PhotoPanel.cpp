@@ -141,7 +141,7 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 	}
 }
 
-//20230613 - Start doing moving panel the right way and also get it to stop appropriatley against wall
+//20230614 - Optimize the hell out of this moving photo stuff (saving texture size and scale, ect, and individual picture movings, ect
 
 void Drawable::PhotoPanel::UpdateMovingPhotos()
 {
