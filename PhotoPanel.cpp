@@ -153,15 +153,7 @@ void Drawable::PhotoPanel::UpdateMovingPhotos()
 		float photoScaleSizeX = _currentBarleyPhotos[i].barleySprite.getScale().x;
 		float photoDisplaySize = photoTextureSizeX * photoScaleSizeX;
 
-		if (_currentBarleyPhotos[i].spriteWidthPosition + photoDisplaySize + 1 < panelPositionX + panelSizeX)
-		{
-			float positionX = _currentBarleyPhotos[i].spriteWidthPosition++;
-			float positionY = _currentBarleyPhotos[i].spriteHeightPosition;
-			_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(1, 0));
-			ResetPanelSprites();
-		}
-
-		/*if (_moveRight == true)
+		if (_moveRight == true)
 		{
 			if (_currentBarleyPhotos[i].spriteWidthPosition + photoDisplaySize + 1 < panelPositionX + panelSizeX)
 			{
@@ -182,14 +174,14 @@ void Drawable::PhotoPanel::UpdateMovingPhotos()
 			{
 				float positionX = _currentBarleyPhotos[i].spriteWidthPosition--;
 				float positionY = _currentBarleyPhotos[i].spriteHeightPosition;
-				_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(1, 0));
+				_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(-1, 0));
 				ResetPanelSprites();
 			}
 			else
 			{
 				_moveRight = true;
 			}
-		}*/
+		}
 	}
 }
 
