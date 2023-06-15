@@ -13,6 +13,9 @@ class BarleyPhoto
 		sf::Image image;
 		sf::Sprite barleySprite;
 		sf::Vector2u textureSize;
+
+		sf::Vector2f currentDisplaySize;
+
 		float spriteWidthPosition = 0;
 		float spriteHeightPosition = 0;
 

@@ -141,7 +141,7 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 	}
 }
 
-//20230614 - Optimize the hell out of this moving photo stuff (saving texture size and scale, ect, and individual picture movings, ect
+//20230615 - Optimize the hell out of this moving photo stuff (saving texture size and scale, ect, and individual picture movings, ect
 
 void Drawable::PhotoPanel::UpdateMovingPhotos()
 {
@@ -149,9 +149,8 @@ void Drawable::PhotoPanel::UpdateMovingPhotos()
 	{
 		float panelPositionX = GetPanelPosition().x;
 		float panelSizeX = GetPanelSize().x;
-		float photoTextureSizeX = _currentBarleyPhotos[i].texture.getSize().x;
-		float photoScaleSizeX = _currentBarleyPhotos[i].barleySprite.getScale().x;
-		float photoDisplaySize = photoTextureSizeX * photoScaleSizeX;
+		//update for double layout as well
+		float photoDisplaySize = _currentBarleyPhotos[i].currentDisplaySize.x;
 
 		if (_moveRight == true)
 		{
