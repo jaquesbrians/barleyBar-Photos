@@ -149,7 +149,6 @@ void Drawable::PhotoPanel::UpdateMovingPhotos()
 	{
 		float panelPositionX = GetPanelPosition().x;
 		float panelSizeX = GetPanelSize().x;
-		//update for double layout as well
 		float photoDisplaySize = _currentBarleyPhotos[i].currentDisplaySize.x;
 
 		if (_moveRight == true)

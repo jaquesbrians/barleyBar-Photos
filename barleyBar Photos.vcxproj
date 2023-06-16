@@ -158,6 +158,7 @@
     <ClCompile Include="Main.cpp" />
     <ClCompile Include="MarianneManager.cpp" />
     <ClCompile Include="MarianneMath.cpp" />
+    <ClCompile Include="MovingPhotosManager.cpp" />
     <ClCompile Include="PhotoCombiner.cpp" />
     <ClCompile Include="PhotoPanel.cpp" />
     <ClCompile Include="PhotoWindow.cpp" />
@@ -180,6 +181,7 @@
     <ClInclude Include="InputPanel.h" />
     <ClInclude Include="MarianneManager.h" />
     <ClInclude Include="MarianneMath.h" />
+    <ClInclude Include="MovingPhotosManager.h" />
     <ClInclude Include="PhotoCombiner.h" />
     <ClInclude Include="PhotoPanel.h" />
     <ClInclude Include="PhotoWindow.h" />

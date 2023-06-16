@@ -22,27 +22,15 @@ void DoubleWindowLayout::SetInitialSpritePositionAndScale(BarleyPhoto &barleyPho
 {
 	sf::Vector2u textureSize = barleyPhoto.texture.getSize();
 
-
 	bool horizontal = textureSize.x > textureSize.y ? true : false;
-
-	float textureScaleSizeWidth = 0.0f;
-	float textureScaleSizeHeight = 0.0f;
-
-	if (horizontal) // Need to think why we would want to know horizontal vs vertical
-	{
-		textureScaleSizeWidth = ((double)_windowHalfWidth / (double)textureSize.x);
-		textureScaleSizeHeight = ((double)_windowHeight / (double)textureSize.y);
-	}
-	else
-	{
-		textureScaleSizeWidth = ((double)_windowHalfWidth / (double)textureSize.x);
-		textureScaleSizeHeight = ((double)_windowHeight / (double)textureSize.y);
-	}
-
-	
+	float textureScaleSizeWidth = horizontal ? ((double)_windowHalfWidth / (double)textureSize.x) : ((double)_windowHalfWidth / (double)textureSize.x);
+	float textureScaleSizeHeight = horizontal ? ((double)_windowHeight / (double)textureSize.y) : ((double)_windowHeight / (double)textureSize.y);
 	float finalScalingValue = std::min(textureScaleSizeWidth, textureScaleSizeHeight);
 	finalScalingValue = finalScalingValue * .90f;
 	barleyPhoto.barleySprite.setScale(sf::Vector2f(finalScalingValue, finalScalingValue));
+	sf::Vector2f updatedScaleSize = barleyPhoto.barleySprite.getScale();
+	barleyPhoto.currentDisplaySize = sf::Vector2f(textureSize.x * updatedScaleSize.x, textureSize.y * updatedScaleSize.y);
+
 
 	if (_leftSideOriented)
 	{
@@ -58,7 +46,6 @@ void DoubleWindowLayout::SetInitialSpritePositionAndScale(BarleyPhoto &barleyPho
 	barleyPhoto.barleySprite.setPosition(sf::Vector2f(barleyPhoto.spriteWidthPosition, barleyPhoto.spriteHeightPosition));
 	
 	_leftSideOriented = !_leftSideOriented;
-	
 }
 
 
