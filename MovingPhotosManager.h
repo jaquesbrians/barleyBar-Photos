@@ -15,5 +15,7 @@ class MovingPhotosManager
 	private:
 	protected:
 	public:
+		//20230616 - Start on this class with passing in the currentphotos on the photo panel and putting their respective sides in the above maps so they
+			//can be tested against each other for physics calculations.  Maybe Marianne Math should be used or added to?
 };
 
