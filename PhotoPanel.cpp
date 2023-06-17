@@ -143,10 +143,25 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 
 //20230615 - Optimize the hell out of this moving photo stuff (saving texture size and scale, ect, and individual picture movings, ect
 
+//panel Left = panelPositionX;
+//panel top = panelPositionY;
+//panel right =  panelPositionX + panelSizeX
+//panel bottom = panelPositionY + panelSizeY;
+
+//picture left = spriteWidthPosition;
+//picture top = spriteHeightPosition;
+//picture right = spriteWidthPosition + photoDisplaySize.x;
+//picture bottom = spriteHeightPosition + photoDisplaySize.y
+
+
+
+
 void Drawable::PhotoPanel::UpdateMovingPhotos()
 {
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
 	{
+		_movingPhotosManager.UpdatePanelAndPhotoPositions(GetPanelPosition(), GetPanelSize(),_currentBarleyPhotos);
+
 		float panelPositionX = GetPanelPosition().x;
 		float panelSizeX = GetPanelSize().x;
 		float photoDisplaySize = _currentBarleyPhotos[i].currentDisplaySize.x;
