@@ -21,5 +21,9 @@ namespace Drawable
 	public:
 
 		void UpdatePanelAndPhotoPositions(sf::Vector2f panelPosition, sf::Vector2f panelSize, std::vector<BarleyPhoto> currentBarleyPhotos);
+		void UpdatePhotoLefts(float photoLeft);
+		void UpdatePhotoTops(float photoTop);
+		void UpdatePhotoRights(float photoRight);
+		void UpdatePhotoBottoms(float photoBottom);
 	};
 }
