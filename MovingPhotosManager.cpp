@@ -30,6 +30,8 @@ void Drawable::MovingPhotosManager::UpdatePanelAndPhotoPositions(sf::Vector2f pa
 	_rightsMap.clear();
 	_bottomsMap.clear();
 
+	//20230617 - fingure how to parse the panel sides appropratley and then move them around together (must optomize)
+
 	for (int i = 0; i < currentBarleyPhotos.size(); i++)
 	{
 		//_leftsMap.emplace
