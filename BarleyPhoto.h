@@ -19,6 +19,13 @@ class BarleyPhoto
 		float spriteWidthPosition = 0;
 		float spriteHeightPosition = 0;
 
+		enum PhotoMovementDirection
+		{
+			MOVE_RIGHT,
+			MOVE_LEFT,
+		};
+		PhotoMovementDirection photoMovementDirection = MOVE_RIGHT;
+
 		void LoadSprite(std::string);
 		void SetSpritePosition(sf::Vector2f panelPositionDirections);
 };

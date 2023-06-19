@@ -10,7 +10,7 @@
 //picture bottom = spriteHeightPosition + photoDisplaySize.y
 
 
-void Drawable::MovingPhotosManager::UpdatePanelAndPhotoPositions(sf::Vector2f panelPosition, sf::Vector2f panelSize, std::vector<BarleyPhoto> currentBarleyPhotos)
+void Drawable::MovingPhotosManager::UpdatePanelAndPhotoPositions(sf::Vector2f panelPosition, sf::Vector2f panelSize, std::vector<BarleyPhoto> &currentBarleyPhotos)
 {
 	_panelWalls[0] = panelPosition.x;
 	_panelWalls[1] = panelPosition.y;
@@ -35,6 +35,38 @@ void Drawable::MovingPhotosManager::UpdatePanelAndPhotoPositions(sf::Vector2f pa
 		UpdatePhotoTops(photoTop);
 		UpdatePhotoRights(photoRight);
 		UpdatePhotoBottoms(photoBottom);
+	}
+
+	for (int i = 0; i < currentBarleyPhotos.size(); i++)
+	{
+		if (currentBarleyPhotos[i].photoMovementDirection == BarleyPhoto::PhotoMovementDirection::MOVE_RIGHT)
+		{
+			if (currentBarleyPhotos[i].spriteWidthPosition + currentBarleyPhotos[i].currentDisplaySize.x + 1 < _panelWalls[2])
+			{
+				currentBarleyPhotos[i].spriteWidthPosition++;
+				currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(1, 0));
+				continue;
+			}
+			else
+			{
+				currentBarleyPhotos[i].photoMovementDirection = BarleyPhoto::PhotoMovementDirection::MOVE_LEFT;
+				continue;
+			}
+		}
+		
+		if (currentBarleyPhotos[i].photoMovementDirection = BarleyPhoto::PhotoMovementDirection::MOVE_LEFT)
+		{
+			if (currentBarleyPhotos[i].spriteWidthPosition - 1 > _panelWalls[0])
+			{
+				currentBarleyPhotos[i].spriteWidthPosition--;
+				currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(-1, 0));
+				continue;
+			}
+			else
+			{
+				currentBarleyPhotos[i].photoMovementDirection = BarleyPhoto::PhotoMovementDirection::MOVE_RIGHT;
+			}
+		}
 	}
 
 	//Now that they are in there what should happen next ???

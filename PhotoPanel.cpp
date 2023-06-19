@@ -141,61 +141,11 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 	}
 }
 
-//20230615 - Optimize the hell out of this moving photo stuff (saving texture size and scale, ect, and individual picture movings, ect
-
-//panel Left = panelPositionX;
-//panel top = panelPositionY;
-//panel right =  panelPositionX + panelSizeX
-//panel bottom = panelPositionY + panelSizeY;
-
-//picture left = spriteWidthPosition;
-//picture top = spriteHeightPosition;
-//picture right = spriteWidthPosition + photoDisplaySize.x;
-//picture bottom = spriteHeightPosition + photoDisplaySize.y
-
-
-
-
 void Drawable::PhotoPanel::UpdateMovingPhotos()
 {
-	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
-	{
+	
 		_movingPhotosManager.UpdatePanelAndPhotoPositions(GetPanelPosition(), GetPanelSize(),_currentBarleyPhotos);
-
-		float panelPositionX = GetPanelPosition().x;
-		float panelSizeX = GetPanelSize().x;
-		float photoDisplaySize = _currentBarleyPhotos[i].currentDisplaySize.x;
-
-		if (_moveRight == true)
-		{
-			if (_currentBarleyPhotos[i].spriteWidthPosition + photoDisplaySize + 1 < panelPositionX + panelSizeX)
-			{
-				float positionX = _currentBarleyPhotos[i].spriteWidthPosition++;
-				float positionY = _currentBarleyPhotos[i].spriteHeightPosition;
-				_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(1, 0));
-				ResetPanelSprites();
-			}
-			else
-			{
-				_moveRight = false;
-			}
-		}
-
-		if (_moveRight == false)
-		{
-			if (_currentBarleyPhotos[i].spriteWidthPosition - 1 > panelPositionX)
-			{
-				float positionX = _currentBarleyPhotos[i].spriteWidthPosition--;
-				float positionY = _currentBarleyPhotos[i].spriteHeightPosition;
-				_currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(-1, 0));
-				ResetPanelSprites();
-			}
-			else
-			{
-				_moveRight = true;
-			}
-		}
-	}
+		ResetPanelSprites();
 }
 
 //Might want to rename this function/procedure to be DragPanelPosition (since that is what this is doing)?
