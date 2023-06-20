@@ -42,6 +42,15 @@ void Drawable::MovingPhotosManager::UpdatePanelAndPhotoPositions(sf::Vector2f pa
 	{
 		if (currentBarleyPhotos[i].photoMovementDirection == BarleyPhoto::PhotoMovementDirection::MOVE_RIGHT)
 		{
+
+			float photoRight = currentBarleyPhotos[i].spriteWidthPosition + currentBarleyPhotos[i].currentDisplaySize.x;
+
+			if (_leftsMap.count(photoRight) > 0)
+			{
+				currentBarleyPhotos[i].photoMovementDirection = BarleyPhoto::PhotoMovementDirection::MOVE_LEFT;
+				continue;
+			}
+
 			if (currentBarleyPhotos[i].spriteWidthPosition + currentBarleyPhotos[i].currentDisplaySize.x + 1 < _panelWalls[2])
 			{
 				currentBarleyPhotos[i].spriteWidthPosition++;
@@ -55,8 +64,18 @@ void Drawable::MovingPhotosManager::UpdatePanelAndPhotoPositions(sf::Vector2f pa
 			}
 		}
 		
-		if (currentBarleyPhotos[i].photoMovementDirection = BarleyPhoto::PhotoMovementDirection::MOVE_LEFT)
+		if (currentBarleyPhotos[i].photoMovementDirection == BarleyPhoto::PhotoMovementDirection::MOVE_LEFT)
 		{
+
+			float photoLeft = currentBarleyPhotos[i].spriteWidthPosition;
+
+			if (_rightsMap.count(photoLeft) > 0)
+			{
+				currentBarleyPhotos[i].photoMovementDirection = BarleyPhoto::PhotoMovementDirection::MOVE_RIGHT;
+				continue;
+			}
+
+
 			if (currentBarleyPhotos[i].spriteWidthPosition - 1 > _panelWalls[0])
 			{
 				currentBarleyPhotos[i].spriteWidthPosition--;
@@ -77,7 +96,7 @@ void Drawable::MovingPhotosManager::UpdatePanelAndPhotoPositions(sf::Vector2f pa
 	//Are they allowed to overlap ???
 }
 
-void Drawable::MovingPhotosManager::UpdatePhotoLefts(float photoLeft)
+void Drawable::MovingPhotosManager::UpdatePhotoLefts(int photoLeft)
 {
 	if (_leftsMap.count(photoLeft) > 0)
 	{
@@ -91,7 +110,7 @@ void Drawable::MovingPhotosManager::UpdatePhotoLefts(float photoLeft)
 	}
 }
 
-void Drawable::MovingPhotosManager::UpdatePhotoTops(float photoTop)
+void Drawable::MovingPhotosManager::UpdatePhotoTops(int photoTop)
 {
 	if (_topsMap.count(photoTop) > 0)
 	{
@@ -105,7 +124,7 @@ void Drawable::MovingPhotosManager::UpdatePhotoTops(float photoTop)
 	}
 }
 
-void Drawable::MovingPhotosManager::UpdatePhotoRights(float photoRight)
+void Drawable::MovingPhotosManager::UpdatePhotoRights(int photoRight)
 {
 	if (_rightsMap.count(photoRight) > 0)
 	{
@@ -119,7 +138,7 @@ void Drawable::MovingPhotosManager::UpdatePhotoRights(float photoRight)
 	}
 }
 
-void Drawable::MovingPhotosManager::UpdatePhotoBottoms(float photoBottom)
+void Drawable::MovingPhotosManager::UpdatePhotoBottoms(int photoBottom)
 {
 	if (_bottomsMap.count(photoBottom) > 0)
 	{

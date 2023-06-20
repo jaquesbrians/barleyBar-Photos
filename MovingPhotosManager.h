@@ -8,10 +8,10 @@ namespace Drawable
 	{
 	private:
 		float _panelWalls[4] = { 0, 0, 0, 0 };
-		std::unordered_map<float, int> _leftsMap;
-		std::unordered_map<float, int> _topsMap;
-		std::unordered_map<float, int> _rightsMap;
-		std::unordered_map<float, int> _bottomsMap;		
+		std::unordered_map<int, int> _leftsMap;
+		std::unordered_map<int, int> _topsMap;
+		std::unordered_map<int, int> _rightsMap;
+		std::unordered_map<int, int> _bottomsMap;		
 
 	protected:
 	public:
@@ -21,9 +21,9 @@ namespace Drawable
 	public:
 
 		void UpdatePanelAndPhotoPositions(sf::Vector2f panelPosition, sf::Vector2f panelSize, std::vector<BarleyPhoto> &currentBarleyPhotos);
-		void UpdatePhotoLefts(float photoLeft);
-		void UpdatePhotoTops(float photoTop);
-		void UpdatePhotoRights(float photoRight);
-		void UpdatePhotoBottoms(float photoBottom);
+		void UpdatePhotoLefts(int photoLeft);
+		void UpdatePhotoTops(int photoTop);
+		void UpdatePhotoRights(int photoRight);
+		void UpdatePhotoBottoms(int photoBottom);
 	};
 }

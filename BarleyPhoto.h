@@ -24,7 +24,15 @@ class BarleyPhoto
 			MOVE_RIGHT,
 			MOVE_LEFT,
 		};
+
+		enum PhotoCollision
+		{
+			DONT_COLLIDE_WITH_PHOTOS,
+			COLLIDE_WITH_PHOTOS
+		};
+
 		PhotoMovementDirection photoMovementDirection = MOVE_RIGHT;
+		PhotoCollision photoCollision = DONT_COLLIDE_WITH_PHOTOS;
 
 		void LoadSprite(std::string);
 		void SetSpritePosition(sf::Vector2f panelPositionDirections);
