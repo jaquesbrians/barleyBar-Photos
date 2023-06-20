@@ -22,8 +22,7 @@ void Drawable::MovingPhotosManager::UpdatePanelAndPhotoPositions(sf::Vector2f pa
 	_rightsMap.clear();
 	_bottomsMap.clear();
 
-	//20230619 - put seperate variables in barleyphoto to house should bounce off other objects/photos/ or ignore them
-	// Get the panels to start bouncing off each other.  
+	//20230620 - Try to think of a better way to get them bouncing (as far as code cleanliness and logic goes) and adding moving up and down 
 
 	for (int i = 0; i < currentBarleyPhotos.size(); i++)
 	{
