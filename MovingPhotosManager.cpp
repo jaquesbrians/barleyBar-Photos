@@ -55,8 +55,13 @@ void Drawable::MovingPhotosManager::UpdatePanelAndPhotoPositions(sf::Vector2f pa
 				// cool typewriter affect going on here by accident 20241124
 				//currentBarleyPhotos[i].spriteWidthPosition = currentBarleyPhotos[i].spriteWidthPosition + 0.1f;
 				//currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(.1f, 0));
-				currentBarleyPhotos[i].spriteWidthPosition = currentBarleyPhotos[i].spriteWidthPosition + 1.0f;
-				currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(1.0f, 0));
+
+
+				float deltaTime = currentBarleyPhotos[i].GetBarleyPhotoClock().restart().asSeconds();
+				float speed = 100.0f * deltaTime;
+
+				currentBarleyPhotos[i].spriteWidthPosition = currentBarleyPhotos[i].spriteWidthPosition + speed;
+				currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(speed, 0));
 				continue;
 			}
 			else

@@ -16,6 +16,9 @@ class BarleyPhoto
 
 		sf::Vector2f currentDisplaySize;
 
+		//Trial Variable to get more of a const
+		sf::Clock _barleyPhotoClock;
+
 		float spriteWidthPosition = 0;
 		float spriteHeightPosition = 0;
 
@@ -36,5 +39,7 @@ class BarleyPhoto
 
 		void LoadSprite(std::string);
 		void SetSpritePosition(sf::Vector2f panelPositionDirections);
+
+		sf::Clock GetBarleyPhotoClock() { return _barleyPhotoClock; }
 };
 
