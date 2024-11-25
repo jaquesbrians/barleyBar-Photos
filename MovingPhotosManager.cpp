@@ -52,8 +52,11 @@ void Drawable::MovingPhotosManager::UpdatePanelAndPhotoPositions(sf::Vector2f pa
 
 			if (currentBarleyPhotos[i].spriteWidthPosition + currentBarleyPhotos[i].currentDisplaySize.x + 1 < _panelWalls[2])
 			{
-				currentBarleyPhotos[i].spriteWidthPosition++;
-				currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(1, 0));
+				// cool typewriter affect going on here by accident 20241124
+				//currentBarleyPhotos[i].spriteWidthPosition = currentBarleyPhotos[i].spriteWidthPosition + 0.1f;
+				//currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(.1f, 0));
+				currentBarleyPhotos[i].spriteWidthPosition = currentBarleyPhotos[i].spriteWidthPosition + 1.0f;
+				currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(1.0f, 0));
 				continue;
 			}
 			else

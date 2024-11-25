@@ -12,10 +12,10 @@
 std::string PhotoCombiner::BlendTwoPhotos(BarleyPhoto& firstPhoto, BarleyPhoto& secondPhoto, std::string pathToSave)
 {
 	sf::Image firstPhotoImage = firstPhoto.image;
-	sf::Vector2 firstPhotoSize = firstPhotoImage.getSize();
+	sf::Vector2u firstPhotoSize = firstPhotoImage.getSize();
 
 	sf::Texture secondPhotoTexture = secondPhoto.texture;
-	sf::Vector2 secondPhotoSize = secondPhotoTexture.getSize();
+	sf::Vector2u secondPhotoSize = secondPhotoTexture.getSize();
 	sf::Image secondPhotoImage = secondPhotoTexture.copyToImage();
 
 	sf::Uint8* PanelPixels = new sf::Uint8[(firstPhotoSize.x + secondPhotoSize.x) * (firstPhotoSize.y + secondPhotoSize.y) * 4];

@@ -13,7 +13,7 @@ namespace Drawable
 			ColorChanger _currentBackGroundColor = sf::Color::White;
 			MovingPhotosManager _movingPhotosManager;
 			std::vector<BarleyPhoto> _currentBarleyPhotos;
-			std::string _directoryPath = "C:\\Users\\15408\\Desktop\\Guarantees\\";
+			std::string _directoryPath = "C:\\Users\\jaque\\OneDrive\\Desktop\\TrialPhotosForBarleyPhotos";
 			std::map<int, BarleyPhoto> _barleyPhotoMaps;
 			std::vector<unsigned int> _allRandomPhotosVector;
 			std::vector<unsigned int> _remainingRandomPhotosVector;

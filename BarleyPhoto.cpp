@@ -21,8 +21,22 @@ void BarleyPhoto::LoadSprite(std::string photoPathWay)
 
 void BarleyPhoto::SetSpritePosition(sf::Vector2f panelPositionDirections)
 {
+
+	sf::Clock clock;
+
+	float deltaTime = clock.restart().asSeconds();
+
 	sf::Vector2f updateSpritePosition = barleySprite.getPosition();
 	updateSpritePosition.x = updateSpritePosition.x + panelPositionDirections.x;
 	updateSpritePosition.y = updateSpritePosition.y + panelPositionDirections.y;
 	barleySprite.setPosition(updateSpritePosition);
+
+	sf::Vector2f speed(100.f, 50.f);
+
+
+	// Move the sprite
+	//barleySprite.move(updateSpritePosition * deltaTime);
+
+
+
 }
