@@ -87,7 +87,7 @@ Drawable::StartingInputPanel::StartingInputPanel(sf::Vector2f mainPanelSize, sf:
     int numberOfButtons, ButtonPositions buttonPositions)
     : InputPanel(mainPanelSize, mainPanelPosition, mainPanelColor, numberOfButtons, buttonPositions),
     _previewPhotoPanel(sf::Vector2f(mainPanelSize.x - 300.0f, mainPanelSize.y - 75.0f), 
-        sf::Vector2f(mainPanelPosition.x + 260.0f, mainPanelPosition.y + 50.0f), sf::Color(50.0f, 50.0f, 50.0f))
+        sf::Vector2f(mainPanelPosition.x + 260.0f, mainPanelPosition.y + 50.0f), sf::Color(150.0f, 150.0f, 150.0f))
 {
 
     StartingInputPanelButton0* startingInputPanelButton0 = new StartingInputPanelButton0;

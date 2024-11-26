@@ -22,6 +22,7 @@ void SingleWindowLayout::SetInitialSpritePositionAndScale(BarleyPhoto &barleyPho
 	float finalScalingValue = std::min(textureScaleSizeWidth, textureScaleSizeHeight);
 	finalScalingValue = finalScalingValue * _singlePhotoScale;
 	barleyPhoto.barleySprite.setScale(sf::Vector2f(finalScalingValue, finalScalingValue));
+	//barleyPhoto.barleySprite.setScale(sf::Vector2f(0.05f, 0.05f));
 	sf::Vector2f updatedScaleSize = barleyPhoto.barleySprite.getScale();
 	barleyPhoto.currentDisplaySize = sf::Vector2f(textureSize.x * updatedScaleSize.x, textureSize.y * updatedScaleSize.y);
 

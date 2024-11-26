@@ -59,7 +59,6 @@ void Drawable::MovingPhotosManager::UpdatePanelAndPhotoPositions(sf::Vector2f pa
 
 				float deltaTime = currentBarleyPhotos[i].GetBarleyPhotoClock().restart().asSeconds();
 				float speed = 100.0f * deltaTime;
-
 				currentBarleyPhotos[i].spriteWidthPosition = currentBarleyPhotos[i].spriteWidthPosition + speed;
 				currentBarleyPhotos[i].SetSpritePosition(sf::Vector2f(speed, 0));
 				continue;
