@@ -119,7 +119,7 @@ std::list<sf::Sprite> Drawable::PhotoPanel::GetPhotoPanelSprites()
 
 void Drawable::PhotoPanel::UpdatePanelTimers()
 {
-
+	//Things for 20241127 (figure how to get this clock in sync so it sends rational numbers)
 	sf::Clock clock;
 	//Update all Currently active photos
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
