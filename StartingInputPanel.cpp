@@ -148,6 +148,10 @@ void Drawable::StartingInputPanel::ContainAllPanelSprites()
 
 void Drawable::StartingInputPanel::UpdatePanelTimers()
 {
+
+    _previewPhotoPanel.PhotoPanel::UpdatePanelTimers();
+    ContainAllPanelSprites();
+
     if (_previewPhotoPanel.GetIsCyclyingByTime())
     {
         _previewPhotoPanel.PhotoPanel::UpdatePanelTimers();
@@ -156,8 +160,8 @@ void Drawable::StartingInputPanel::UpdatePanelTimers()
 
     if (_previewPhotoPanel.ArePhotosMoving())
     {
-        _previewPhotoPanel.PhotoPanel::UpdateMovingPhotos();
-        ContainAllPanelSprites();
+        //_previewPhotoPanel.PhotoPanel::UpdateMovingPhotos();
+        //ContainAllPanelSprites();
     }
 }
 

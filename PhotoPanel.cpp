@@ -119,6 +119,17 @@ std::list<sf::Sprite> Drawable::PhotoPanel::GetPhotoPanelSprites()
 
 void Drawable::PhotoPanel::UpdatePanelTimers()
 {
+
+	sf::Clock clock;
+	//Update all Currently active photos
+	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
+	{
+		_currentBarleyPhotos[i].DissolveEffectTrial(clock.restart().asSeconds());
+	}
+
+	ResetPanelSprites();
+
+
 	//this is only happening when a picture switches ???
 	_panelSprite.setColor(_currentBackGroundColor.RandomColorFadeTimeElapse());
 
@@ -143,7 +154,6 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 
 void Drawable::PhotoPanel::UpdateMovingPhotos()
 {
-	
 		_movingPhotosManager.UpdatePanelAndPhotoPositions(GetPanelPosition(), GetPanelSize(),_currentBarleyPhotos);
 		ResetPanelSprites();
 }

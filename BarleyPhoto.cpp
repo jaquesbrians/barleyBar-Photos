@@ -15,7 +15,12 @@ void BarleyPhoto::LoadSprite(std::string photoPathWay)
 	texture.setSmooth(true);
 	sf::Sprite sprite(texture);
 	barleySprite = sprite;
-	DissolveEffectTrial();
+
+
+    sf::Color spriteColor = barleySprite.getColor();
+    spriteColor.a = 0;
+    barleySprite.setColor(spriteColor);
+
 }
 
 void BarleyPhoto::SetSpritePosition(sf::Vector2f panelPositionDirections)
@@ -31,10 +36,22 @@ void BarleyPhoto::SetSpritePosition(sf::Vector2f panelPositionDirections)
 	//-figure out dissolve on a timer
 	//-figure out the whole shader thing (That would be super cool)
 
-void BarleyPhoto::DissolveEffectTrial()
+void BarleyPhoto::DissolveEffectTrial(float deltaTime)
 {
-	sf::Clock clock;
-	float alpha = 1.0f;
+    sf::Color spriteColor = barleySprite.getColor();
+    const float fadeDuration = 2.0f; // Duration of the fade-in in seconds
+    const float fadeRate = 255.0f / fadeDuration;
+
+
+
+
+    if (spriteColor.a < 255)
+    {
+        spriteColor.a = std::min(255, spriteColor.a + static_cast<int>(deltaTime * fadeRate)); // Adjust speed here
+        barleySprite.setColor(spriteColor);
+    }
+
+	/*float alpha = 1.0f;
 
 
 	// Update alpha over time
@@ -49,6 +66,14 @@ void BarleyPhoto::DissolveEffectTrial()
 	sf::Color spriteColor = barleySprite.getColor();
 	spriteColor.a = static_cast<sf::Uint8>(alpha); // Scale to [0, 255] 
 	barleySprite.setColor(spriteColor);
+
+
+
+    if (spriteColor.a < 255) 
+    {
+        spriteColor.a = std::min(255, spriteColor.a + static_cast<int>(deltaTime * 100)); // Adjust speed here
+        barleySprite.setColor(spriteColor);
+    }*/
 }
 
 
