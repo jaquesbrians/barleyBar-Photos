@@ -119,6 +119,9 @@ Drawable::StartingInputPanel::StartingInputPanel(sf::Vector2f mainPanelSize, sf:
 
     SetUpPreviewPhotoPanel();
     ContainAllPanelSprites();
+
+    _previewPhotoPanel.SetUpPhotoPanel();
+    
 }
 
 
@@ -148,7 +151,6 @@ void Drawable::StartingInputPanel::ContainAllPanelSprites()
 
 void Drawable::StartingInputPanel::UpdatePanelTimers()
 {
-
     _previewPhotoPanel.PhotoPanel::UpdatePanelTimers();
     ContainAllPanelSprites();
 

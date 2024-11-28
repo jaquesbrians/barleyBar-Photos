@@ -18,6 +18,7 @@ namespace Drawable
 			std::vector<unsigned int> _allRandomPhotosVector;
 			std::vector<unsigned int> _remainingRandomPhotosVector;
 			sf::Clock _photoWindowClock;
+			sf::Clock _photosClock;
 			float _timeInterval = 2.0f;
 			int _barleyPhotoMapSize = 0;
 			int _currentBarleyPhotoIndex = 0;

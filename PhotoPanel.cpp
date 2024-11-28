@@ -5,7 +5,6 @@
 Drawable::PhotoPanel::PhotoPanel(sf::Vector2f size, sf::Vector2f position, sf::Color color)
 {
 	this->Panel::Panel(size, position, _currentBackGroundColor.RandomColorFadeTimeElapse());
-	SetUpPhotoPanel();
 }
 
 Drawable::PhotoPanel::~PhotoPanel()
@@ -36,6 +35,8 @@ void Drawable::PhotoPanel::SetUpPhotoPanel()
 	_barleyPhotoMapSize = photoIndex;
 
 	RandomlyCyclePhoto();
+
+	_photosClock.restart();
 }
 
 void Drawable::PhotoPanel::UpdateWindowLayoutMode(WindowLayoutManager::WindowLayoutMode updatedWindowLayoutMode)
@@ -119,12 +120,11 @@ std::list<sf::Sprite> Drawable::PhotoPanel::GetPhotoPanelSprites()
 
 void Drawable::PhotoPanel::UpdatePanelTimers()
 {
-	//Things for 20241127 (figure how to get this clock in sync so it sends rational numbers)
-	sf::Clock clock;
+
 	//Update all Currently active photos
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
 	{
-		_currentBarleyPhotos[i].DissolveEffectTrial(clock.restart().asSeconds());
+		_currentBarleyPhotos[i].DissolveEffectTrial(_photosClock.restart().asSeconds());
 	}
 
 	ResetPanelSprites();
