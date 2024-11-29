@@ -9,6 +9,7 @@ void BarleyPhoto::LoadSprite(std::string photoPathWay)
 	}*/
 
 	//sf::Image image;
+
 	image.loadFromFile(photoPathWay);
 	texture.loadFromImage(image, sf::IntRect());
 
@@ -16,11 +17,8 @@ void BarleyPhoto::LoadSprite(std::string photoPathWay)
 	sf::Sprite sprite(texture);
 	barleySprite = sprite;
 
-
     sf::Color spriteColor = barleySprite.getColor();
     spriteColor.a = 0;
-
-    trialAlpha = spriteColor.r;//to remove after debugging
 
     barleySprite.setColor(spriteColor);
 
@@ -41,7 +39,6 @@ void BarleyPhoto::SetSpritePosition(sf::Vector2f panelPositionDirections)
 
 void BarleyPhoto::DissolveEffectTrial(double deltaTime)
 {
-
     if (fading) 
     {
         float alpha = (deltaTime / 3.0f) * 255.0f;
@@ -52,80 +49,11 @@ void BarleyPhoto::DissolveEffectTrial(double deltaTime)
             fading = false;
         }
 
-        // Set the sprite's color with the updated alpha
         sf::Color color = barleySprite.getColor();
         color.a = static_cast<sf::Uint8>(alpha);
         barleySprite.setColor(color);
     }
-
-
-
-
-
-
-
-    //This one sort of works
-    /*sf::Color spriteColor = barleySprite.getColor();
-    const float fadeDuration = 2.0f; // Duration of the fade-in in seconds
-    const float fadeRate = 255.0f / fadeDuration;
-
-    if (spriteColor.a <= 255)
-    {
-        spriteColor.a = std::min(255, spriteColor.a + static_cast<int>(deltaTime)); // Adjust speed here
-        //spriteColor.a = deltaTime;
-        barleySprite.setColor(spriteColor);
-
-        trialAlpha = spriteColor.a; // to remove after debugging
-    }*/
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-    //spriteColor.r = 155;
-    //spriteColor.a = 255;
-    //barleySprite.setColor(spriteColor);
-
-	/*float alpha = 1.0f;
-
-
-	// Update alpha over time
-	float deltaTime = clock.restart().asSeconds();
-	alpha -= deltaTime * 0.2f; // Decrease alpha (adjust speed as needed)
-	if (alpha < 0.0f)
-	{
-		alpha = 0.0f;
-	}
-
-	// Apply the transparency to the sprite
-	sf::Color spriteColor = barleySprite.getColor();
-	spriteColor.a = static_cast<sf::Uint8>(alpha); // Scale to [0, 255] 
-	barleySprite.setColor(spriteColor);
-
-
-
-    if (spriteColor.a < 255) 
-    {
-        spriteColor.a = std::min(255, spriteColor.a + static_cast<int>(deltaTime * 100)); // Adjust speed here
-        barleySprite.setColor(spriteColor);
-    }*/
 }
-
-
-
 
 
 
@@ -209,23 +137,4 @@ void main() {
 
     gl_FragColor = photoColor;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 */
