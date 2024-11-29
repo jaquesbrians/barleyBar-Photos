@@ -41,7 +41,31 @@ void BarleyPhoto::SetSpritePosition(sf::Vector2f panelPositionDirections)
 
 void BarleyPhoto::DissolveEffectTrial(double deltaTime)
 {
-    sf::Color spriteColor = barleySprite.getColor();
+
+    if (fading) 
+    {
+        float alpha = (deltaTime / 3.0f) * 255.0f;
+
+        if (alpha > 255.0f) 
+        {
+            alpha = 255.0f;
+            fading = false;
+        }
+
+        // Set the sprite's color with the updated alpha
+        sf::Color color = barleySprite.getColor();
+        color.a = static_cast<sf::Uint8>(alpha);
+        barleySprite.setColor(color);
+    }
+
+
+
+
+
+
+
+    //This one sort of works
+    /*sf::Color spriteColor = barleySprite.getColor();
     const float fadeDuration = 2.0f; // Duration of the fade-in in seconds
     const float fadeRate = 255.0f / fadeDuration;
 
@@ -52,7 +76,24 @@ void BarleyPhoto::DissolveEffectTrial(double deltaTime)
         barleySprite.setColor(spriteColor);
 
         trialAlpha = spriteColor.a; // to remove after debugging
-    }
+    }*/
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     //spriteColor.r = 155;
     //spriteColor.a = 255;

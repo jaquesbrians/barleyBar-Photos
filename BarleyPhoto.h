@@ -21,6 +21,7 @@ class BarleyPhoto
 
 
 		float trialAlpha = 0;
+		bool fading = true;
 
 		enum PhotoMovementDirection
 		{

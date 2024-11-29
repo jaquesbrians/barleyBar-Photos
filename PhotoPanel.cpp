@@ -120,33 +120,63 @@ std::list<sf::Sprite> Drawable::PhotoPanel::GetPhotoPanelSprites()
 
 void Drawable::PhotoPanel::UpdatePanelTimers()
 {
+
 	if (_fade == 0)
 	{
 		_fade = 1;
 		_photoWindowClock.restart();
 	}
 
+
+
+
+	double deltaTime = _photoWindowClock.getElapsedTime().asSeconds();
+
+
+	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
+	{
+		_currentBarleyPhotos[i].DissolveEffectTrial(deltaTime);
+	}
+
 	
-	//if (seconds <= 10)
-	//{
-		//float percentage = seconds / 10; 
-		double seconds = _photoWindowClock.getElapsedTime().asSeconds();
-		double whole = 1000;
-		double number = 255;
 
-		double percentage = (seconds / whole) * 100;
-		double result = (number * percentage) / 100;
+	/*float elapsedTime = clock.getElapsedTime().asSeconds();
 
-		//float deltaTime = result;
-		//float deltaTime = 255 * percentage;
+	if (fading) {
+		// Calculate alpha based on elapsed time
+		float alpha = (elapsedTime / fadeDuration) * 255.0f;
 
-		for (int i = 0; i < _currentBarleyPhotos.size(); i++)
-		{
-			//_currentBarleyPhotos[i].DissolveEffectTrial(_photoWindowClock.getElapsedTime().asSeconds());
-			_currentBarleyPhotos[i].DissolveEffectTrial(result);
+		// Clamp alpha to [0, 255]
+		if (alpha > 255.0f) {
+			alpha = 255.0f;
+			fading = false; // Stop fading once fully visible
 		}
-	//}
-	//_fade++;
+
+		// Set the sprite's color with the updated alpha
+		sf::Color color = sprite.getColor();
+		color.a = static_cast<sf::Uint8>(alpha);
+		sprite.setColor(color);
+	}*/
+
+
+	//This one sort of works
+	/*
+	if (_fade == 0)
+	{
+		_fade = 1;
+		_photoWindowClock.restart();
+	}
+	
+	double seconds = _photoWindowClock.getElapsedTime().asSeconds();
+	double whole = 1000;
+	double number = 255;
+	double percentage = (seconds / whole) * 100;
+	double result = (number * percentage) / 100;
+
+	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
+	{
+		_currentBarleyPhotos[i].DissolveEffectTrial(result);
+	}*/
 
 
 	ResetPanelSprites(); // toggle this to change it only when you tap.  
