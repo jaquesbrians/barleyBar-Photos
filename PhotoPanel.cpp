@@ -120,19 +120,33 @@ std::list<sf::Sprite> Drawable::PhotoPanel::GetPhotoPanelSprites()
 
 void Drawable::PhotoPanel::UpdatePanelTimers()
 {
-
-
-
-
-
-	//Update all Currently active photos
-	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
+	if (_fade == 0)
 	{
-		_currentBarleyPhotos[i].DissolveEffectTrial(_fade);
-		//_currentBarleyPhotos[i].DissolveEffectTrial(_photosClock.restart().asSeconds());
+		_fade = 1;
+		_photoWindowClock.restart();
 	}
 
-	_fade++;
+	
+	//if (seconds <= 10)
+	//{
+		//float percentage = seconds / 10; 
+		double seconds = _photoWindowClock.getElapsedTime().asSeconds();
+		double whole = 1000;
+		double number = 255;
+
+		double percentage = (seconds / whole) * 100;
+		double result = (number * percentage) / 100;
+
+		//float deltaTime = result;
+		//float deltaTime = 255 * percentage;
+
+		for (int i = 0; i < _currentBarleyPhotos.size(); i++)
+		{
+			//_currentBarleyPhotos[i].DissolveEffectTrial(_photoWindowClock.getElapsedTime().asSeconds());
+			_currentBarleyPhotos[i].DissolveEffectTrial(result);
+		}
+	//}
+	//_fade++;
 
 
 	ResetPanelSprites(); // toggle this to change it only when you tap.  

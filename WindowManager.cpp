@@ -87,7 +87,6 @@ void WindowManager::UpdateWindowManager()
 			//(*it)->UpdatePanelTimers();
 		}
 
-		//photoWindow
 		photoWindow.DrawCall(_currentBackGroundColor.RandomColorFadeTimeElapse(), _spriteDrawList, _textDrawList);
 		//_spriteDrawList.clear();
 		//_textDrawList.clear();

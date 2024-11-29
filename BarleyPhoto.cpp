@@ -39,16 +39,16 @@ void BarleyPhoto::SetSpritePosition(sf::Vector2f panelPositionDirections)
 	//-figure out dissolve on a timer
 	//-figure out the whole shader thing (That would be super cool)
 
-void BarleyPhoto::DissolveEffectTrial(float deltaTime)
+void BarleyPhoto::DissolveEffectTrial(double deltaTime)
 {
     sf::Color spriteColor = barleySprite.getColor();
     const float fadeDuration = 2.0f; // Duration of the fade-in in seconds
     const float fadeRate = 255.0f / fadeDuration;
 
-    if (spriteColor.a < 255)
+    if (spriteColor.a <= 255)
     {
-        //spriteColor.r = std::min(255, spriteColor.a + static_cast<int>(deltaTime * fadeRate)); // Adjust speed here
-        spriteColor.a = deltaTime;
+        spriteColor.a = std::min(255, spriteColor.a + static_cast<int>(deltaTime)); // Adjust speed here
+        //spriteColor.a = deltaTime;
         barleySprite.setColor(spriteColor);
 
         trialAlpha = spriteColor.a; // to remove after debugging
