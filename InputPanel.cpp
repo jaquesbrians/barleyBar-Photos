@@ -62,7 +62,7 @@ void Drawable::InputPanel::InitializeInputPanelSprites()
 	SetUpCornerExitButton();
 	SetUpStandardInputButtons();
 
-	ContainAllPanelSprites();
+	//ContainAllPanelSprites();
 }
 
 void Drawable::InputPanel::ContainAllPanelSprites()
@@ -131,8 +131,9 @@ void Drawable::InputPanel::SetUpStandardInputButtons()
 	}
 }
 
-std::list<sf::Sprite> Drawable::InputPanel::GetInputPanelSprites()
+std::list<sf::Sprite>& Drawable::InputPanel::GetInputPanelSprites()
 {
+	ContainAllPanelSprites();
 	return _panelSprites;  
 }
 
@@ -164,7 +165,7 @@ void Drawable::InputPanel::ShowPanel()
 	_panelSprite.setPosition(_panelPosition);
 	_panelSprite.setScale(sf::Vector2f(1, 1));
 	SetUpCornerExitButton();
-	ContainAllPanelSprites();
+	//ContainAllPanelSprites();
 }
 
 bool Drawable::InputPanel::OnPanelLeftMouseClickedUp(sf::Vector2i clickPosition)
@@ -207,7 +208,7 @@ bool Drawable::InputPanel::OnPanelLeftMouseClickedUp(sf::Vector2i clickPosition)
 		buttonClicked = true;
 	}
 	
-	ContainAllPanelSprites();
+	//ContainAllPanelSprites();
 
 	return buttonClicked;
 }
@@ -236,7 +237,7 @@ bool Drawable::InputPanel::OnPanelLeftMouseHoldDown(sf::Vector2i clickPosition, 
 			it->DragPanelPosition(movePanelDirections);
 		}
 
-		ContainAllPanelSprites();
+		//ContainAllPanelSprites();
 		return true;
 	}
 	return panelClicked;

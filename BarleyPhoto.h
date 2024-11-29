@@ -19,6 +19,9 @@ class BarleyPhoto
 		float spriteWidthPosition = 0;
 		float spriteHeightPosition = 0;
 
+
+		float trialAlpha = 0;
+
 		enum PhotoMovementDirection
 		{
 			MOVE_RIGHT,

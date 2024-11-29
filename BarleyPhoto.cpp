@@ -19,6 +19,9 @@ void BarleyPhoto::LoadSprite(std::string photoPathWay)
 
     sf::Color spriteColor = barleySprite.getColor();
     spriteColor.a = 0;
+
+    trialAlpha = spriteColor.r;//to remove after debugging
+
     barleySprite.setColor(spriteColor);
 
 }
@@ -39,14 +42,21 @@ void BarleyPhoto::SetSpritePosition(sf::Vector2f panelPositionDirections)
 void BarleyPhoto::DissolveEffectTrial(float deltaTime)
 {
     sf::Color spriteColor = barleySprite.getColor();
-    const float fadeDuration = 5.0f; // Duration of the fade-in in seconds
+    const float fadeDuration = 2.0f; // Duration of the fade-in in seconds
     const float fadeRate = 255.0f / fadeDuration;
 
     if (spriteColor.a < 255)
     {
-        spriteColor.a = std::min(255, spriteColor.a + static_cast<int>(deltaTime * fadeRate)); // Adjust speed here
+        //spriteColor.r = std::min(255, spriteColor.a + static_cast<int>(deltaTime * fadeRate)); // Adjust speed here
+        spriteColor.a = deltaTime;
         barleySprite.setColor(spriteColor);
+
+        trialAlpha = spriteColor.a; // to remove after debugging
     }
+
+    //spriteColor.r = 155;
+    //spriteColor.a = 255;
+    //barleySprite.setColor(spriteColor);
 
 	/*float alpha = 1.0f;
 

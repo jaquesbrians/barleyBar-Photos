@@ -74,17 +74,23 @@ void WindowManager::UpdateWindowManager()
 		}
 
 		//this is where i need to concentrate on how  we should contain all panel sprites ???
+		_spriteDrawList.clear();
+		_textDrawList.clear();
+
+
 
 		for (std::list<InputPanel*>::iterator it = _inputPanels.begin(); it != _inputPanels.end(); it++)
 		{
+			(*it)->UpdatePanelTimers();
 			AddSpritesToDrawList((*it)->GetInputPanelSprites(), 1);
 			AddTextsToDrawList((*it)->GetInputPanelTexts(), 2);
-			(*it)->UpdatePanelTimers();
+			//(*it)->UpdatePanelTimers();
 		}
 
+		//photoWindow
 		photoWindow.DrawCall(_currentBackGroundColor.RandomColorFadeTimeElapse(), _spriteDrawList, _textDrawList);
-		_spriteDrawList.clear();
-		_textDrawList.clear();
+		//_spriteDrawList.clear();
+		//_textDrawList.clear();
 	}
 }
 
@@ -142,6 +148,15 @@ void WindowManager::AddSpritesToDrawList(std::list<sf::Sprite> drawSprites, int 
 		_spriteDrawList.push_back(*it);
 	}
 }
+
+void WindowManager::AddSpritesToDrawList2(std::list<sf::Sprite>& drawSprites, int priority)
+{
+	for (auto& sprite : drawSprites)
+	{
+		_spriteDrawList.push_back(sprite);
+	}
+}
+
 
 void WindowManager::AddTextsToDrawList(std::list<sf::Text> drawTexts, int priority)
 {

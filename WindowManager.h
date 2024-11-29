@@ -40,6 +40,9 @@ class WindowManager
 		void AddSpriteToDrawList(sf::Sprite, int priority);
 		void AddTextToDrawList(sf::Text TextToDraw, int priority);
 		void AddSpritesToDrawList(std::list<sf::Sprite> drawSprites, int priority);
+
+		void AddSpritesToDrawList2(std::list<sf::Sprite>& drawSprites, int priority);
+
 		void AddTextsToDrawList(std::list<sf::Text> drawTexts, int priority);
 		void CheckInteractionWithLeftMouseClickUp(sf::Vector2i position);
 		void CheckInteractionWithLeftMouseHoldDown(sf::Vector2i position, sf::Vector2i previousPosition);

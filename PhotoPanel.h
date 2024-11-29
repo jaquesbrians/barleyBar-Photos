@@ -28,6 +28,10 @@ namespace Drawable
 			//temp trial bool
 			bool _moveRight = true;
 
+			int _fade = 0;
+
+
+
 		protected:
 
 		public:

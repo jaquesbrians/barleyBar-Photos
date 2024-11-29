@@ -44,7 +44,7 @@ namespace Drawable
 			void InitializeInputPanelSprites();
 			void SetUpCornerExitButton();
 			void SetUpStandardInputButtons();
-			std::list<sf::Sprite> GetInputPanelSprites();
+			std::list<sf::Sprite>& GetInputPanelSprites();
 			std::list<sf::Text> GetInputPanelTexts();
 
 			void HidePanel(sf::Vector2f hiddenPanelPosition);
