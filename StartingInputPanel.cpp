@@ -117,11 +117,8 @@ Drawable::StartingInputPanel::StartingInputPanel(sf::Vector2f mainPanelSize, sf:
     startingInputPanelButton4->startingInputPanel = this;
     startingInputPanelButton5->startingInputPanel = this;
 
-    SetUpPreviewPhotoPanel();
     ContainAllPanelSprites();
-
-    _previewPhotoPanel.SetUpPhotoPanel();
-    
+    SetUpPreviewPhotoPanel();
 }
 
 
@@ -131,6 +128,12 @@ Drawable::StartingInputPanel::~StartingInputPanel()
 
 void Drawable::StartingInputPanel::SetUpPreviewPhotoPanel()
 {
+    _previewPhotoPanel.SetUpPhotoPanel();
+    std::vector<BarleyPhoto>& currentBarleyPhotos = _previewPhotoPanel.GetCurrentBarleyPhotos();
+    for (int i = 0; i < currentBarleyPhotos.size(); i++)
+    {
+        currentBarleyPhotos[i].photoAlphaSetting = BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_IN;
+    }
 }
 
 void Drawable::StartingInputPanel::ContainAllPanelSprites()

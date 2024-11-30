@@ -28,10 +28,6 @@ namespace Drawable
 			//temp trial bool
 			bool _moveRight = true;
 
-			int _fade = 0;
-
-
-
 		protected:
 
 		public:
@@ -66,7 +62,7 @@ namespace Drawable
 			virtual void UpdateMovingPhotos();
 			virtual void DragPanelPosition(sf::Vector2f panelPositionDirections);
 			std::list<sf::Sprite> GetPhotoPanelSprites();
+			std::vector<BarleyPhoto>& GetCurrentBarleyPhotos();
 	};
-
 }
 

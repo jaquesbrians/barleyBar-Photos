@@ -17,11 +17,13 @@ void BarleyPhoto::LoadSprite(std::string photoPathWay)
 	sf::Sprite sprite(texture);
 	barleySprite = sprite;
 
-    sf::Color spriteColor = barleySprite.getColor();
-    spriteColor.a = 0;
+    if (photoAlphaSetting == ALPHA_ZERO)
+    {
+        sf::Color spriteColor = barleySprite.getColor();
+        spriteColor.a = 0;
 
-    barleySprite.setColor(spriteColor);
-
+        barleySprite.setColor(spriteColor);
+    }
 }
 
 void BarleyPhoto::SetSpritePosition(sf::Vector2f panelPositionDirections)
@@ -39,14 +41,14 @@ void BarleyPhoto::SetSpritePosition(sf::Vector2f panelPositionDirections)
 
 void BarleyPhoto::DissolveEffectTrial(double deltaTime)
 {
-    if (fading) 
+    if (photoAlphaSetting == ALPHA_FADE_IN)
     {
         float alpha = (deltaTime / 3.0f) * 255.0f;
 
         if (alpha > 255.0f) 
         {
             alpha = 255.0f;
-            fading = false;
+            photoAlphaSetting = FULL_ALPHA;
         }
 
         sf::Color color = barleySprite.getColor();
@@ -54,7 +56,6 @@ void BarleyPhoto::DissolveEffectTrial(double deltaTime)
         barleySprite.setColor(color);
     }
 }
-
 
 
 /*#include <SFML/Graphics.hpp>

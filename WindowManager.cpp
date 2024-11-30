@@ -41,6 +41,11 @@ void WindowManager::StartWindowManager()
 
 	_inputPanels.push_back(startingInputPanel);
 	//_inputPanels.push_back(picturePanel2);
+
+	for (std::list<InputPanel*>::iterator it = _inputPanels.begin(); it != _inputPanels.end(); it++)
+	{
+		(*it)->UpdatePanelTimers();
+	}
 }
 
 InputPanel * WindowManager::CreateNewInputPanel(bool b)
@@ -73,23 +78,17 @@ void WindowManager::UpdateWindowManager()
 			photoWindow.renderWindow.close();
 		}
 
-		//this is where i need to concentrate on how  we should contain all panel sprites ???
 		_spriteDrawList.clear();
 		_textDrawList.clear();
-
-
 
 		for (std::list<InputPanel*>::iterator it = _inputPanels.begin(); it != _inputPanels.end(); it++)
 		{
 			(*it)->UpdatePanelTimers();
 			AddSpritesToDrawList((*it)->GetInputPanelSprites(), 1);
 			AddTextsToDrawList((*it)->GetInputPanelTexts(), 2);
-			//(*it)->UpdatePanelTimers();
 		}
 
 		photoWindow.DrawCall(_currentBackGroundColor.RandomColorFadeTimeElapse(), _spriteDrawList, _textDrawList);
-		//_spriteDrawList.clear();
-		//_textDrawList.clear();
 	}
 }
 

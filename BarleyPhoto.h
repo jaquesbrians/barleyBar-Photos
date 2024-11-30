@@ -19,10 +19,6 @@ class BarleyPhoto
 		float spriteWidthPosition = 0;
 		float spriteHeightPosition = 0;
 
-
-		float trialAlpha = 0;
-		bool fading = true;
-
 		enum PhotoMovementDirection
 		{
 			MOVE_RIGHT,
@@ -35,8 +31,18 @@ class BarleyPhoto
 			COLLIDE_WITH_PHOTOS
 		};
 
+		enum PhotoAlphaSetting
+		{
+			ALPHA_ZERO,
+			FULL_ALPHA,
+			ALPHA_FADE_IN,
+			ALPHA_FADE_OUT
+		};
+		
+
 		PhotoMovementDirection photoMovementDirection = MOVE_RIGHT;
 		PhotoCollision photoCollision = DONT_COLLIDE_WITH_PHOTOS;
+		PhotoAlphaSetting photoAlphaSetting = ALPHA_ZERO;
 
 		void LoadSprite(std::string);
 		void SetSpritePosition(sf::Vector2f panelPositionDirections);

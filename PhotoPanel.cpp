@@ -20,6 +20,8 @@ void Drawable::PhotoPanel::SetUpPhotoPanel()
 	_windowLayoutManager.SetSingleWindowLayout();
 	//_windowLayoutManager.SetDoubleWindowLayout();
 
+
+	//We'll probably want to put the loading of all the images in to some sort of master place instead of individual photo panels
 	int photoIndex = 0;
 	for (const auto& entry : std::filesystem::directory_iterator(_directoryPath))
 	{
@@ -37,13 +39,13 @@ void Drawable::PhotoPanel::SetUpPhotoPanel()
 	RandomlyCyclePhoto();
 
 	_photosClock.restart();
+	_photoWindowClock.restart();
 }
 
 void Drawable::PhotoPanel::UpdateWindowLayoutMode(WindowLayoutManager::WindowLayoutMode updatedWindowLayoutMode)
 {
 	_windowLayoutManager.UpdateWindowLayout(updatedWindowLayoutMode);
 }
-
 
 void Drawable::PhotoPanel::CyclePhotosByTime(float timeInterval, bool chooseRandom, bool chooseLeft)
 {
@@ -113,30 +115,18 @@ void Drawable::PhotoPanel::RandomlyCyclePhotoHelper()
 }
 
 
-std::list<sf::Sprite> Drawable::PhotoPanel::GetPhotoPanelSprites()
-{
-	return _panelSprites;
-}
-
 void Drawable::PhotoPanel::UpdatePanelTimers()
 {
-	if (_fade == 0)
-	{
-		_fade = 1;
-		_photoWindowClock.restart();
-	}
-
 	double deltaTime = _photoWindowClock.getElapsedTime().asSeconds();
-
-
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
 	{
-		_currentBarleyPhotos[i].DissolveEffectTrial(deltaTime);
+		if (_currentBarleyPhotos[i].photoAlphaSetting == BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_IN)
+		{
+			_currentBarleyPhotos[i].DissolveEffectTrial(deltaTime);
+		}
 	}
 
-
-	ResetPanelSprites(); // toggle this to change it only when you tap.  
-
+	ResetPanelSprites(); // toggle this to change it only when you tap.
 
 	//this is only happening when a picture switches ???
 	_panelSprite.setColor(_currentBackGroundColor.RandomColorFadeTimeElapse());
@@ -188,4 +178,14 @@ void Drawable::PhotoPanel::ResetPanelSprites()
 	{
 		_panelSprites.push_back(_currentBarleyPhotos[i].barleySprite);
 	}
+}
+
+std::list<sf::Sprite> Drawable::PhotoPanel::GetPhotoPanelSprites()
+{
+	return _panelSprites;
+}
+
+std::vector<BarleyPhoto>& Drawable::PhotoPanel::GetCurrentBarleyPhotos()
+{
+	return _currentBarleyPhotos;
 }

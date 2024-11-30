@@ -26,12 +26,10 @@ namespace Drawable
 			sf::Color _panelColor;
 			sf::Text _panelText;
 			sf::Font _panelFontArial;
-			std::string _panelString = "Hello";
+			std::string _panelString = "";
 			sf::Color _panelTextColor = sf::Color::Black;
 			int _panelID = -1;
 			bool _isHidden = false;
-
-		protected:
 
 		public: 
 
