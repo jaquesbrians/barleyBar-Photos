@@ -120,23 +120,27 @@ void Drawable::PhotoPanel::RandomlyCyclePhotoHelper()
 	_currentBarleyPhotos.push_back(_barleyPhotoMaps[selectedPhoto]);
 }
 
-
+//Look up how to do checkable flags (see reasons why to use and see if they are better than bools?)
 void Drawable::PhotoPanel::UpdatePanelTimers()
 {
-
 	_panelSprite.setColor(_currentBackGroundColor.RandomColorFadeTimeElapse());
 
 	double deltaTime = _photoWindowClock.getElapsedTime().asSeconds();
+
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
 	{
 		if (_currentBarleyPhotos[i].photoAlphaSetting == BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_IN)
 		{
-			_currentBarleyPhotos[i].DissolveEffectTrial(deltaTime);
+			_currentBarleyPhotos[i].BarleyPhotoFader(deltaTime);
+		}
+		else if (_currentBarleyPhotos[i].photoAlphaSetting == BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_OUT)
+		{
+			_currentBarleyPhotos[i].BarleyPhotoFader(deltaTime);
 		}
 	}
 
 
-	if (_cycleByTime == true && _photoWindowClock.getElapsedTime().asSeconds() >= _timeInterval)
+	if (_cycleByTime == true && deltaTime >= _timeInterval)
 	{
 		switch (photoCycleStyle)
 		{

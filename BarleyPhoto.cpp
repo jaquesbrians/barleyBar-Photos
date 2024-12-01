@@ -39,7 +39,7 @@ void BarleyPhoto::SetSpritePosition(sf::Vector2f panelPositionDirections)
 	//-figure out dissolve on a timer
 	//-figure out the whole shader thing (That would be super cool)
 
-void BarleyPhoto::DissolveEffectTrial(double deltaTime)
+void BarleyPhoto::BarleyPhotoFader(double deltaTime)
 {
     if (photoAlphaSetting == ALPHA_FADE_IN)
     {
@@ -52,6 +52,19 @@ void BarleyPhoto::DissolveEffectTrial(double deltaTime)
         }
 
         sf::Color color = barleySprite.getColor();
+        color.a = static_cast<sf::Uint8>(alpha);
+        barleySprite.setColor(color);
+    }
+    else if (photoAlphaSetting == ALPHA_FADE_OUT)
+    {
+        sf::Color color = barleySprite.getColor();
+        if (color.a < 0)
+        {
+            photoAlphaSetting = ALPHA_ZERO;
+        }
+
+        float alpha = (deltaTime / 3.0f) * 255.0f;
+        alpha = color.a - alpha;
         color.a = static_cast<sf::Uint8>(alpha);
         barleySprite.setColor(color);
     }
