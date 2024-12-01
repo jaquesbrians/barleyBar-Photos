@@ -22,6 +22,8 @@ namespace Drawable
 			float _timeInterval = 2.0f;
 			int _barleyPhotoMapSize = 0;
 			int _currentBarleyPhotoIndex = 0;
+
+
 			bool _cycleByTime = false;
 			bool _photosAreMoving = true;
 
@@ -51,7 +53,7 @@ namespace Drawable
 			~PhotoPanel();
 			void SetUpPhotoPanel();
 			void UpdateWindowLayoutMode(WindowLayoutManager::WindowLayoutMode updatedWindowLayoutMode);
-			void CyclePhotosByTime(float timeInterval = 3.0f, bool chooseRandom = false, bool chooseLeft = false);
+			void CyclePhotosByTime(float timeInterval = 6.0f, bool chooseRandom = false, bool chooseLeft = false);
 			void StopCyclePhotosByTime();
 			void ManuallyCyclePhotos(bool cycleRight = true);
 			void RandomlyCyclePhoto();

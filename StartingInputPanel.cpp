@@ -138,6 +138,9 @@ void Drawable::StartingInputPanel::SetUpPreviewPhotoPanel()
     {
         currentBarleyPhotos[i].photoAlphaSetting = BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_IN;
     }
+
+    _previewPhotoPanel.photoCycleStyle = PhotoPanel::PhotoCycleStyle::CYCLE_RANDOM;
+    _previewPhotoPanel.CyclePhotosByTime();
 }
 
 void Drawable::StartingInputPanel::ContainAllPanelSprites()
@@ -161,11 +164,11 @@ void Drawable::StartingInputPanel::UpdatePanelTimers()
     _previewPhotoPanel.PhotoPanel::UpdatePanelTimers();
     ContainAllPanelSprites();
 
-    if (_previewPhotoPanel.GetIsCyclyingByTime())
+   /* if (_previewPhotoPanel.GetIsCyclyingByTime())
     {
         _previewPhotoPanel.PhotoPanel::UpdatePanelTimers();
         ContainAllPanelSprites();
-    }
+    }*/
 
     if (_previewPhotoPanel.ArePhotosMoving())
     {

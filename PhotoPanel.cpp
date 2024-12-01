@@ -96,6 +96,11 @@ void Drawable::PhotoPanel::RandomlyCyclePhoto()
 		RandomlyCyclePhotoHelper();
 	}
 
+	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
+	{
+		_currentBarleyPhotos[i].photoAlphaSetting = BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_IN;
+	}
+
 	ResetPanelSprites();
 }
 
@@ -117,6 +122,9 @@ void Drawable::PhotoPanel::RandomlyCyclePhotoHelper()
 
 void Drawable::PhotoPanel::UpdatePanelTimers()
 {
+
+	_panelSprite.setColor(_currentBackGroundColor.RandomColorFadeTimeElapse());
+
 	double deltaTime = _photoWindowClock.getElapsedTime().asSeconds();
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
 	{
@@ -126,10 +134,6 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 		}
 	}
 
-	ResetPanelSprites(); // toggle this to change it only when you tap.
-
-	//this is only happening when a picture switches ???
-	_panelSprite.setColor(_currentBackGroundColor.RandomColorFadeTimeElapse());
 
 	if (_cycleByTime == true && _photoWindowClock.getElapsedTime().asSeconds() >= _timeInterval)
 	{
@@ -148,6 +152,8 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 
 		_photoWindowClock.restart();
 	}
+
+	ResetPanelSprites(); // toggle this to change it only when you tap.
 }
 
 void Drawable::PhotoPanel::UpdateMovingPhotos()
