@@ -49,6 +49,7 @@ void Drawable::PhotoPanel::UpdateWindowLayoutMode(WindowLayoutManager::WindowLay
 
 void Drawable::PhotoPanel::CyclePhotosByTime(float timeInterval, bool chooseRandom, bool chooseLeft)
 {
+	_timeInterval = timeInterval;
 	_photoWindowClock.restart();
 	_cycleByTime = true;
 }

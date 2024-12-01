@@ -140,7 +140,7 @@ void Drawable::StartingInputPanel::SetUpPreviewPhotoPanel()
     }
 
     _previewPhotoPanel.photoCycleStyle = PhotoPanel::PhotoCycleStyle::CYCLE_RANDOM;
-    _previewPhotoPanel.CyclePhotosByTime();
+    _previewPhotoPanel.CyclePhotosByTime(10.0f);
 }
 
 void Drawable::StartingInputPanel::ContainAllPanelSprites()
