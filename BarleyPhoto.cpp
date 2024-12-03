@@ -57,15 +57,16 @@ void BarleyPhoto::BarleyPhotoFader(double deltaTime)
     }
     else if (photoAlphaSetting == ALPHA_FADE_OUT)
     {
-        sf::Color color = barleySprite.getColor();
-        if (color.a < 0)
+        float alpha = (deltaTime / 3.0f) * 255.0f;
+
+        if (alpha <= 0)
         {
+            alpha = 0;
             photoAlphaSetting = ALPHA_ZERO;
         }
 
-        float alpha = (deltaTime / 3.0f) * 255.0f;
-        alpha = color.a - alpha;
-        color.a = static_cast<sf::Uint8>(alpha);
+        sf::Color color = barleySprite.getColor();
+        color.a = static_cast<sf::Uint8>(255.0f - alpha);
         barleySprite.setColor(color);
     }
 }

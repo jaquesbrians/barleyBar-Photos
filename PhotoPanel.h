@@ -29,6 +29,7 @@ namespace Drawable
 
 			//temp trial bool
 			bool _moveRight = true;
+			double _windDown = 255.0f;
 
 		protected:
 

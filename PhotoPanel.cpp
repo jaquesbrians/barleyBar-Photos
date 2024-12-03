@@ -127,6 +127,19 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 
 	double deltaTime = _photoWindowClock.getElapsedTime().asSeconds();
 
+	//if (((_timeInterval - 1) - deltaTime) <= 3.0 && _currentBarleyPhotos[i].photoAlphaSetting != BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_OUT)
+	//{
+	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
+	{
+		if (_timeInterval - 4.0 <= deltaTime && _currentBarleyPhotos[i].photoAlphaSetting != BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_OUT)
+		{
+			_currentBarleyPhotos[i].photoAlphaSetting = BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_OUT;
+			_photoWindowClock.restart();
+		}
+	}
+	//}
+
+	//For Tomorrow include these statements in the above for loop wheneverthing is set and done with current bug.  
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
 	{
 		if (_currentBarleyPhotos[i].photoAlphaSetting == BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_IN)
@@ -135,7 +148,10 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 		}
 		else if (_currentBarleyPhotos[i].photoAlphaSetting == BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_OUT)
 		{
+			//_currentBarleyPhotos[i].BarleyPhotoFader(deltaTime - int(deltaTime));
 			_currentBarleyPhotos[i].BarleyPhotoFader(deltaTime);
+			//_currentBarleyPhotos[i].BarleyPhotoFader(_windDown);
+			_windDown--;
 		}
 	}
 
