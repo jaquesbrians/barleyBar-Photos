@@ -131,10 +131,10 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 	//{
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
 	{
-		if (_timeInterval - 4.0 <= deltaTime && _currentBarleyPhotos[i].photoAlphaSetting != BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_OUT)
+		if (_timeInterval - 3.0 <= deltaTime && _currentBarleyPhotos[i].photoAlphaSetting != BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_OUT)
 		{
 			_currentBarleyPhotos[i].photoAlphaSetting = BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_OUT;
-			_photoWindowClock.restart();
+			//_photoWindowClock.restart();
 		}
 	}
 	//}
@@ -149,7 +149,7 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 		else if (_currentBarleyPhotos[i].photoAlphaSetting == BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_OUT)
 		{
 			//_currentBarleyPhotos[i].BarleyPhotoFader(deltaTime - int(deltaTime));
-			_currentBarleyPhotos[i].BarleyPhotoFader(deltaTime);
+			_currentBarleyPhotos[i].BarleyPhotoFader(deltaTime - 7.0);
 			//_currentBarleyPhotos[i].BarleyPhotoFader(_windDown);
 			_windDown--;
 		}
@@ -174,7 +174,7 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 		_photoWindowClock.restart();
 	}
 
-	ResetPanelSprites(); // toggle this to change it only when you tap.
+	ResetPanelSprites(); // toggle this off to change it only when you tap.
 }
 
 void Drawable::PhotoPanel::UpdateMovingPhotos()
