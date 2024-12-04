@@ -20,6 +20,7 @@ namespace Drawable
 			sf::Clock _photoWindowClock;
 			sf::Clock _photosClock;
 			float _timeInterval = 6.0f;
+			float _fadeTime = 2.0f;
 			int _barleyPhotoMapSize = 0;
 			int _currentBarleyPhotoIndex = 0;
 
@@ -29,7 +30,6 @@ namespace Drawable
 
 			//temp trial bool
 			bool _moveRight = true;
-			double _windDown = 255.0f;
 
 		protected:
 

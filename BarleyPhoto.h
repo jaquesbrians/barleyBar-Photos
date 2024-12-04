@@ -49,7 +49,7 @@ class BarleyPhoto
 
 		void LoadSprite(std::string);
 		void SetSpritePosition(sf::Vector2f panelPositionDirections);
-		void BarleyPhotoFader(double deltaTime);
+		void BarleyPhotoFader(double deltaTime, float fadeTime);
 
 		sf::Clock GetBarleyPhotoClock() { return _barleyPhotoClock; }
 };

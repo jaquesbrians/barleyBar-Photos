@@ -21,7 +21,7 @@ void Drawable::PhotoPanel::SetUpPhotoPanel()
 	//_windowLayoutManager.SetDoubleWindowLayout();
 
 
-	//We'll probably want to put the loading of all the images in to some sort of master place instead of individual photo panels
+	// TODO: We'll probably want to put the loading of all the images in to some sort of master place instead of individual photo panels
 	int photoIndex = 0;
 	for (const auto& entry : std::filesystem::directory_iterator(_directoryPath))
 	{
@@ -85,8 +85,7 @@ void Drawable::PhotoPanel::ManuallyCyclePhotos(bool cycleRight)
 	ResetPanelSprites();
 }
 
-//Things to do for tomorrow -  20230611
-// Start thinking about how to make your photos slowly move during long periods of staying still, like a screen savor.
+// TODO: Start thinking about how to make your photos slowly move during long periods of staying still, like a screen savor.
 
 void Drawable::PhotoPanel::RandomlyCyclePhoto()
 {
@@ -120,41 +119,29 @@ void Drawable::PhotoPanel::RandomlyCyclePhotoHelper()
 	_currentBarleyPhotos.push_back(_barleyPhotoMaps[selectedPhoto]);
 }
 
-//Look up how to do checkable flags (see reasons why to use and see if they are better than bools?)
+// TODO: Look up how to do checkable flags (see reasons why to use and see if they are better than bools?)
 void Drawable::PhotoPanel::UpdatePanelTimers()
 {
 	_panelSprite.setColor(_currentBackGroundColor.RandomColorFadeTimeElapse());
 
 	double deltaTime = _photoWindowClock.getElapsedTime().asSeconds();
 
-	//if (((_timeInterval - 1) - deltaTime) <= 3.0 && _currentBarleyPhotos[i].photoAlphaSetting != BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_OUT)
-	//{
 	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
 	{
-		if (_timeInterval - 3.0 <= deltaTime && _currentBarleyPhotos[i].photoAlphaSetting != BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_OUT)
+		if (_timeInterval - _fadeTime <= deltaTime && _currentBarleyPhotos[i].photoAlphaSetting != BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_OUT)
 		{
 			_currentBarleyPhotos[i].photoAlphaSetting = BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_OUT;
-			//_photoWindowClock.restart();
 		}
-	}
-	//}
 
-	//For Tomorrow include these statements in the above for loop wheneverthing is set and done with current bug.  
-	for (int i = 0; i < _currentBarleyPhotos.size(); i++)
-	{
 		if (_currentBarleyPhotos[i].photoAlphaSetting == BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_IN)
 		{
-			_currentBarleyPhotos[i].BarleyPhotoFader(deltaTime);
+			_currentBarleyPhotos[i].BarleyPhotoFader(deltaTime, _fadeTime);
 		}
 		else if (_currentBarleyPhotos[i].photoAlphaSetting == BarleyPhoto::PhotoAlphaSetting::ALPHA_FADE_OUT)
 		{
-			//_currentBarleyPhotos[i].BarleyPhotoFader(deltaTime - int(deltaTime));
-			_currentBarleyPhotos[i].BarleyPhotoFader(deltaTime - 7.0);
-			//_currentBarleyPhotos[i].BarleyPhotoFader(_windDown);
-			_windDown--;
+			_currentBarleyPhotos[i].BarleyPhotoFader(deltaTime - (_timeInterval - _fadeTime), _fadeTime);
 		}
 	}
-
 
 	if (_cycleByTime == true && deltaTime >= _timeInterval)
 	{
@@ -174,7 +161,7 @@ void Drawable::PhotoPanel::UpdatePanelTimers()
 		_photoWindowClock.restart();
 	}
 
-	ResetPanelSprites(); // toggle this off to change it only when you tap.
+	ResetPanelSprites(); // TODO: toggle this off to change it only when you tap.
 }
 
 void Drawable::PhotoPanel::UpdateMovingPhotos()
@@ -183,7 +170,7 @@ void Drawable::PhotoPanel::UpdateMovingPhotos()
 		ResetPanelSprites();
 }
 
-//Might want to rename this function/procedure to be DragPanelPosition (since that is what this is doing)?
+//TODO: Might want to rename this function/procedure to be DragPanelPosition (since that is what this is doing)?
 void Drawable::PhotoPanel::DragPanelPosition(sf::Vector2f panelPositionDirections)
 {
 	DragPanelPosition(panelPositionDirections);

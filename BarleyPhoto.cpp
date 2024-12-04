@@ -39,11 +39,11 @@ void BarleyPhoto::SetSpritePosition(sf::Vector2f panelPositionDirections)
 	//-figure out dissolve on a timer
 	//-figure out the whole shader thing (That would be super cool)
 
-void BarleyPhoto::BarleyPhotoFader(double deltaTime)
+void BarleyPhoto::BarleyPhotoFader(double deltaTime, float fadeTime)
 {
     if (photoAlphaSetting == ALPHA_FADE_IN)
     {
-        float alpha = (deltaTime / 3.0f) * 255.0f;
+        float alpha = (deltaTime / fadeTime) * 255.0f;
 
         if (alpha > 255.0f) 
         {
@@ -57,7 +57,7 @@ void BarleyPhoto::BarleyPhotoFader(double deltaTime)
     }
     else if (photoAlphaSetting == ALPHA_FADE_OUT)
     {
-        float alpha = (deltaTime / 3.0f) * 255.0f;
+        float alpha = (deltaTime / fadeTime) * 255.0f;
 
         if (alpha <= 0)
         {
