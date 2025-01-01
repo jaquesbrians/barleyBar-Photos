@@ -1,5 +1,11 @@
 #include "TitleScreenInputPanel.h"
 
+//TODO: January 2, 2025
+// 1.) Figure out what we can take from TitleScreenInputPanel and StartingInputPanel and put into Input Panel proper
+// 2.) Clean up TitleScreenInputPanel to have correct Button Function names
+// 3.) Figure out where we will be loading the StartingInputPanel (It's gonna be called from the Button on TitleScreenInputPanel).
+// 4.) So that seems like we'll need some sort of Input Panel Manager Class probably.  
+
 #pragma region ButtonFunction
 
 class StartingInputPanelButton0 : public ButtonFunction
