@@ -1,6 +1,7 @@
 #include "WindowManager.h"
 #include <SFML/Window.hpp>
 #include "StartingInputPanel.h"
+#include "TitleScreenInputPanel.h"
 
 WindowManager* WindowManager::Instance = NULL;
 
@@ -19,6 +20,7 @@ void WindowManager::StartWindowManager()
 	_windowHeight = sf::VideoMode::getDesktopMode().height;
 	photoWindow.SetUpPhotoWindow(_windowWidth, _windowHeight, _windowTitle);
 
+	//TODO: Not sure what these are for?
 	//_inputPanels.push_back(CreateNewInputPanel(false));
 	//_inputPanels.push_back(CreateNewInputPanel(true));
 
@@ -27,20 +29,23 @@ void WindowManager::StartWindowManager()
 	int windowPosWidth = (_windowWidth * 0.5f) - (winSizeWidth * 0.5f);
 	int windowPosHeight = (_windowHeight * 0.5f) - (winSizeHeight * 0.5f);
 
-	StartingInputPanel* startingInputPanel = new StartingInputPanel(
+	TitleScreenInputPanel* titleScreenInputPanel = new TitleScreenInputPanel(
 		sf::Vector2f(winSizeWidth, winSizeHeight),
 		sf::Vector2f(windowPosWidth, windowPosHeight),
 		sf::Color(0.0f, 0.0f, 0.0f),
-		11, InputPanel::ButtonPositions::Left);
+		1, InputPanel::ButtonPositions::Center);
 
-	/*PicturePanel* picturePanel2 = new PicturePanel(
+	_inputPanels.push_back(titleScreenInputPanel);
+
+	//DO NOT ERASE UNTIL WE FIGURE OUT HOW TO TRANSITION TO THIS PANEL
+	/*StartingInputPanel* startingInputPanel = new StartingInputPanel(
 		sf::Vector2f(winSizeWidth, winSizeHeight),
-		sf::Vector2f(windowPosWidth + 50, windowPosHeight + 50),
-		sf::Color::Cyan,
-		1, InputPanel::ButtonPositions::Center);*/
+		sf::Vector2f(windowPosWidth, windowPosHeight),
+		sf::Color(0.0f, 0.0f, 0.0f),
+		6, InputPanel::ButtonPositions::Left);
 
-	_inputPanels.push_back(startingInputPanel);
-	//_inputPanels.push_back(picturePanel2);
+	_inputPanels.push_back(startingInputPanel);*/
+	
 
 	for (std::list<InputPanel*>::iterator it = _inputPanels.begin(); it != _inputPanels.end(); it++)
 	{

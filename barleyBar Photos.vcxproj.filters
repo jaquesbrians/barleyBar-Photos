@@ -81,6 +81,9 @@
     <ClCompile Include="MovingPhotosManager.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
+    <ClCompile Include="TitleScreenInputPanel.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="BarleyPhoto.h">
@@ -144,6 +147,9 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="MovingPhotosManager.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="TitleScreenInputPanel.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>

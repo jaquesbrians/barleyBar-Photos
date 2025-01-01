@@ -127,7 +127,6 @@ Drawable::StartingInputPanel::~StartingInputPanel()
 }
 
 //Things for tomorrow 20241130
-//Get fade out and fade in between cycling pictures work
 //also ensure the cycle right is working as intended (I think the random choice thing might have a bug)
 
 void Drawable::StartingInputPanel::SetUpPreviewPhotoPanel()

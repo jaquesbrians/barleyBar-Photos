@@ -173,6 +173,7 @@
     <ClCompile Include="Panel.cpp" />
     <ClCompile Include="StartingInputPanel.cpp" />
     <ClCompile Include="SingleWindowLayout.cpp" />
+    <ClCompile Include="TitleScreenInputPanel.cpp" />
     <ClCompile Include="WindowLayout.cpp" />
     <ClCompile Include="WindowLayoutManager.cpp" />
     <ClCompile Include="WindowManager.cpp" />
@@ -196,6 +197,7 @@
     <ClInclude Include="Panel.h" />
     <ClInclude Include="StartingInputPanel.h" />
     <ClInclude Include="SingleWindowLayout.h" />
+    <ClInclude Include="TitleScreenInputPanel.h" />
     <ClInclude Include="WindowLayoutManager.h" />
     <ClInclude Include="WindowLayout.h" />
     <ClInclude Include="WindowManager.h" />
