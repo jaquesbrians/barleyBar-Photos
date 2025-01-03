@@ -24,18 +24,20 @@ void WindowManager::StartWindowManager()
 	//_inputPanels.push_back(CreateNewInputPanel(false));
 	//_inputPanels.push_back(CreateNewInputPanel(true));
 
-	int winSizeWidth = _windowWidth * 0.90f;
-	int winSizeHeight = _windowHeight * 0.90f;
-	int windowPosWidth = (_windowWidth * 0.5f) - (winSizeWidth * 0.5f);
-	int windowPosHeight = (_windowHeight * 0.5f) - (winSizeHeight * 0.5f);
+	_winSizeWidth = _windowWidth * 0.90f;
+	_winSizeHeight = _windowHeight * 0.90f;
+	_windowPosWidth = (_windowWidth * 0.5f) - (_winSizeWidth * 0.5f);
+	_windowPosHeight = (_windowHeight * 0.5f) - (_winSizeHeight * 0.5f);
 
 	TitleScreenInputPanel* titleScreenInputPanel = new TitleScreenInputPanel(
-		sf::Vector2f(winSizeWidth, winSizeHeight),
-		sf::Vector2f(windowPosWidth, windowPosHeight),
+		sf::Vector2f(_winSizeWidth, _winSizeHeight),
+		sf::Vector2f(_windowPosWidth, _windowPosHeight),
 		sf::Color(0.0f, 0.0f, 0.0f),
-		1, InputPanel::ButtonPositions::Center);
+		1, InputPanel::ButtonPositions::Left);
 
 	_inputPanels.push_back(titleScreenInputPanel);
+
+	_currentSeletedPanel = titleScreenInputPanel;
 
 	//DO NOT ERASE UNTIL WE FIGURE OUT HOW TO TRANSITION TO THIS PANEL
 	/*StartingInputPanel* startingInputPanel = new StartingInputPanel(
@@ -46,6 +48,26 @@ void WindowManager::StartWindowManager()
 
 	_inputPanels.push_back(startingInputPanel);*/
 	
+
+	for (std::list<InputPanel*>::iterator it = _inputPanels.begin(); it != _inputPanels.end(); it++)
+	{
+		(*it)->UpdatePanelTimers();
+	}
+}
+
+void WindowManager::ShowStartingInputPanel()
+{
+	_inputPanels.clear();
+
+	StartingInputPanel* startingInputPanel = new StartingInputPanel(
+		sf::Vector2f(_winSizeWidth, _winSizeHeight),
+		sf::Vector2f(_windowPosWidth, _windowPosHeight),
+		sf::Color(0.0f, 0.0f, 0.0f),
+		6, InputPanel::ButtonPositions::Left);
+
+	_inputPanels.push_back(startingInputPanel);
+
+	_currentSeletedPanel = startingInputPanel;
 
 	for (std::list<InputPanel*>::iterator it = _inputPanels.begin(); it != _inputPanels.end(); it++)
 	{
@@ -110,7 +132,6 @@ void WindowManager::CheckInteractionWithLeftMouseClickUp(sf::Vector2i position)
 	}
 }
 
-
 //you are working on how to calculate z depth for two panels being on top of each other
 void WindowManager::CheckInteractionWithLeftMouseHoldDown(sf::Vector2i position, sf::Vector2i previousPosition)
 {
@@ -132,7 +153,6 @@ void WindowManager::CheckInteractionWithLeftMouseHoldDown(sf::Vector2i position,
 		}
 	}
 }
-
 
 void WindowManager::AddSpriteToDrawList(sf::Sprite spriteToDraw, int priority)
 {
@@ -159,7 +179,6 @@ void WindowManager::AddSpritesToDrawList2(std::list<sf::Sprite>& drawSprites, in
 		_spriteDrawList.push_back(sprite);
 	}
 }
-
 
 void WindowManager::AddTextsToDrawList(std::list<sf::Text> drawTexts, int priority)
 {

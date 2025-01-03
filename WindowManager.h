@@ -25,6 +25,12 @@ class WindowManager
 		int _currentPanelIDCount = 0;
 		int _windowWidth = 0;
 		int _windowHeight = 0;
+
+		int _winSizeWidth = 0;
+		int _winSizeHeight = 0;
+		int _windowPosWidth = 0;
+		int _windowPosHeight = 0;
+
 		bool _closeWindow = false;
 
 	public:
@@ -52,6 +58,8 @@ class WindowManager
 		void HideOrShowAPanel(InputPanel* inputPanel, bool hideAPanel);
 		sf::Vector2f GiveHiddenPanelPosition(sf::Vector2f panelSize);
 		sf::Vector2f GiveHiddenPanelScale();
+
+		void ShowStartingInputPanel(); // we're just trying to get this to work.  Not sure this panel will get specific unique function.
 
 		void CloseWindow() { _closeWindow = true; }
 };

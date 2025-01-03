@@ -1,4 +1,5 @@
 #include "TitleScreenInputPanel.h"
+#include "WindowManager.h"
 
 //TODO: January 2, 2025
 // 1.) Figure out what we can take from TitleScreenInputPanel and StartingInputPanel and put into Input Panel proper
@@ -8,16 +9,18 @@
 
 #pragma region ButtonFunction
 
-class StartingInputPanelButton0 : public ButtonFunction
+class TitleScreenInputPanelButton0 : public ButtonFunction
 {
 public:
-    Drawable::TitleScreenInputPanel* startingInputPanel;
+    //Drawable::TitleScreenInputPanel* titleScreenInputPanel;
 public: void Execute()
 {
-    if (startingInputPanel)
+   /* if (titleScreenInputPanel)
     {
-        startingInputPanel->_previewPhotoPanel.ManuallyCyclePhotos();
-    }
+        titleScreenInputPanel->_previewPhotoPanel.ManuallyCyclePhotos();
+    }*/
+
+    WindowManager::GetInstance()->ShowStartingInputPanel();
 }
 };
 
@@ -31,13 +34,13 @@ Drawable::TitleScreenInputPanel::TitleScreenInputPanel(sf::Vector2f mainPanelSiz
         sf::Vector2f(mainPanelPosition.x + 260.0f, mainPanelPosition.y + 50.0f), sf::Color(150.0f, 150.0f, 150.0f))
 {
 
-    StartingInputPanelButton0* startingInputPanelButton0 = new StartingInputPanelButton0;
+    TitleScreenInputPanelButton0* titleScreenInputPanelButton0 = new TitleScreenInputPanelButton0;
 
     auto buttonIterator = _standardInputButtons.begin();
-    buttonIterator->SetButtonFunction(startingInputPanelButton0, "Forward");
+    buttonIterator->SetButtonFunction(titleScreenInputPanelButton0, "Start");
     std::advance(buttonIterator, 1);
 
-    startingInputPanelButton0->startingInputPanel = this;
+    //titleScreenInputPanelButton0->titleScreenInputPanel = this;
 
     ContainAllPanelSprites();
     SetUpPreviewPhotoPanel();
