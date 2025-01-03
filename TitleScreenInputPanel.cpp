@@ -3,10 +3,8 @@
 
 //TODO: January 2, 2025
 // 1.) Figure out what we can take from TitleScreenInputPanel and StartingInputPanel and put into Input Panel proper
-// 2.) Clean up TitleScreenInputPanel to have correct Button Function names
-// 3.) Figure out where we will be loading the StartingInputPanel (It's gonna be called from the Button on TitleScreenInputPanel).
-// 4.) So that seems like we'll need some sort of Input Panel Manager Class probably.  
-
+// 2.) Get the Switching working from the Window Manager class (Title Screen to Starting Input)
+// 3.) Input Manager class is going to be WindowManager (and we'll need to figure out how to use that correctly.
 #pragma region ButtonFunction
 
 class TitleScreenInputPanelButton0 : public ButtonFunction
