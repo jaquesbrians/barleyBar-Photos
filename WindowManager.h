@@ -62,5 +62,7 @@ class WindowManager
 		void ShowStartingInputPanel(); // we're just trying to get this to work.  Not sure this panel will get specific unique function.
 
 		void CloseWindow() { _closeWindow = true; }
+
+		void TrialClearPanels();
 };
 

@@ -10,7 +10,7 @@
 class TitleScreenInputPanelButton0 : public ButtonFunction
 {
 public:
-    //Drawable::TitleScreenInputPanel* titleScreenInputPanel;
+    Drawable::TitleScreenInputPanel* titleScreenInputPanel;
 public: void Execute()
 {
    /* if (titleScreenInputPanel)
@@ -18,7 +18,20 @@ public: void Execute()
         titleScreenInputPanel->_previewPhotoPanel.ManuallyCyclePhotos();
     }*/
 
-    WindowManager::GetInstance()->ShowStartingInputPanel();
+    //Drawable::Panel::_isHidden = true;
+    //WindowManager::GetInstance()->HideOrShowAPanel(titleScreenInputPanel, true);
+    //Drawable::InputPanel::HidePanel(WindowManager::GetInstance()->GiveHiddenPanelPosition(_panelSize));
+
+
+    WindowManager::GetInstance()->TrialClearPanels();
+    //WindowManager::GetInstance()->ShowStartingInputPanel();
+
+    if (titleScreenInputPanel)
+    {
+        delete titleScreenInputPanel;
+    }
+
+    
 }
 };
 
@@ -38,7 +51,7 @@ Drawable::TitleScreenInputPanel::TitleScreenInputPanel(sf::Vector2f mainPanelSiz
     buttonIterator->SetButtonFunction(titleScreenInputPanelButton0, "Start");
     std::advance(buttonIterator, 1);
 
-    //titleScreenInputPanelButton0->titleScreenInputPanel = this;
+    titleScreenInputPanelButton0->titleScreenInputPanel = this;
 
     ContainAllPanelSprites();
     SetUpPreviewPhotoPanel();

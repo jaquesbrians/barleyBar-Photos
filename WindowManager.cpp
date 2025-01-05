@@ -55,6 +55,11 @@ void WindowManager::StartWindowManager()
 	}
 }
 
+void WindowManager::TrialClearPanels()
+{
+	_inputPanels.clear();
+}
+
 void WindowManager::ShowStartingInputPanel()
 {
 	_inputPanels.clear();

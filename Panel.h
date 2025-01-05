@@ -10,10 +10,8 @@ namespace Drawable
 		protected:
 			
 			std::string _fontDirectoryPath = "C:\\Windows\\Fonts\\Arial.ttf";
-
 			std::list<sf::Sprite> _panelSprites;
 			std::list<sf::Text> _panelTexts;
-
 			Math::MarianneMath _marianneMath;
 
 			sf::Uint8* _panelPixels;
