@@ -16,6 +16,8 @@ WindowManager* WindowManager::GetInstance()
 
 void WindowManager::StartWindowManager()
 {
+	Instance = this;
+
 	_windowWidth = sf::VideoMode::getDesktopMode().width;
 	_windowHeight = sf::VideoMode::getDesktopMode().height;
 	photoWindow.SetUpPhotoWindow(_windowWidth, _windowHeight, _windowTitle);
