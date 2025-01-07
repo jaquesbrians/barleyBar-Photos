@@ -5,6 +5,8 @@
 // 1.) Figure out what we can take from TitleScreenInputPanel and StartingInputPanel and put into Input Panel proper
 // 2.) Get the Switching working from the Window Manager class (Title Screen to Starting Input)
 // 3.) Input Manager class is going to be WindowManager (and we'll need to figure out how to use that correctly.
+// 4.) Figure out who is controlling when the switch should happen with the renderer between the two input panels
+// 5.) Figure out why TitlScreen Input Panel's button's don't have any button feedback.  
 #pragma region ButtonFunction
 
 class TitleScreenInputPanelButton0 : public ButtonFunction
