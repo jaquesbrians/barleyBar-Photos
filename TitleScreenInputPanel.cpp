@@ -7,6 +7,8 @@
 // 3.) Input Manager class is going to be WindowManager (and we'll need to figure out how to use that correctly.
 // 4.) Figure out who is controlling when the switch should happen with the renderer between the two input panels
 // 5.) Figure out why TitlScreen Input Panel's button's don't have any button feedback.  
+// 6.) And this is a big one.  The PhotoPanel does not need to get registered twice with each panel.  There could be a group shared
+// version.  That is why there is a delay between title screen and starting screen I believe.  Look at Set Up Photo Panel.cpp
 #pragma region ButtonFunction
 
 class TitleScreenInputPanelButton0 : public ButtonFunction
@@ -19,7 +21,7 @@ public: void Execute()
     //WindowManager::GetInstance()->HideOrShowAPanel(titleScreenInputPanel, true);
     //Drawable::InputPanel::HidePanel(WindowManager::GetInstance()->GiveHiddenPanelPosition(_panelSize));
 
-    WindowManager::GetInstance()->TrialClearPanels();
+    //WindowManager::GetInstance()->TrialClearPanels();
     WindowManager::GetInstance()->ShowStartingInputPanel();
 
     //Not sure if we want to destory this or keep it hidden

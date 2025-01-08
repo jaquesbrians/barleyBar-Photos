@@ -66,7 +66,7 @@ void WindowManager::ShowStartingInputPanel()
 {
 	_inputPanels.clear();
 
-	StartingInputPanel* startingInputPanel = new StartingInputPanel(
+	/*StartingInputPanel* startingInputPanel = new StartingInputPanel(
 		sf::Vector2f(_winSizeWidth, _winSizeHeight),
 		sf::Vector2f(_windowPosWidth, _windowPosHeight),
 		sf::Color(0.0f, 0.0f, 0.0f),
@@ -79,7 +79,7 @@ void WindowManager::ShowStartingInputPanel()
 	for (std::list<InputPanel*>::iterator it = _inputPanels.begin(); it != _inputPanels.end(); it++)
 	{
 		(*it)->UpdatePanelTimers();
-	}
+	}*/
 }
 
 InputPanel * WindowManager::CreateNewInputPanel(bool b)
