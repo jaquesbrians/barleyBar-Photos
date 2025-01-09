@@ -52,7 +52,7 @@ namespace Drawable
 		public:
 			PhotoPanel(sf::Vector2f size, sf::Vector2f position, sf::Color color);
 			~PhotoPanel();
-			void SetUpPhotoPanel();
+			void SetUpPhotoPanel(PhotoPanel* photoPanel = nullptr);
 			void UpdateWindowLayoutMode(WindowLayoutManager::WindowLayoutMode updatedWindowLayoutMode);
 			void CyclePhotosByTime(float timeInterval = 6.0f, bool chooseRandom = false, bool chooseLeft = false);
 			void StopCyclePhotosByTime();
@@ -66,6 +66,9 @@ namespace Drawable
 			virtual void DragPanelPosition(sf::Vector2f panelPositionDirections);
 			std::list<sf::Sprite> GetPhotoPanelSprites();
 			std::vector<BarleyPhoto>& GetCurrentBarleyPhotos();
+			std::map<int, BarleyPhoto>& GetBarleyPhotoMaps();
+			std::vector<unsigned int>& GetAllRandomPhotosVector();
+			std::vector<unsigned int>& GetRemainingRandomPhotosVector();
 	};
 }
 

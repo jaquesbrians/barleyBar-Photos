@@ -11,7 +11,7 @@ Drawable::PhotoPanel::~PhotoPanel()
 {
 }
 
-void Drawable::PhotoPanel::SetUpPhotoPanel()
+void Drawable::PhotoPanel::SetUpPhotoPanel(PhotoPanel* photoPanel)
 {
 	_windowLayoutManager.windowWidth = GetPanelSize().x;
 	_windowLayoutManager.windowHeight = GetPanelSize().y;
@@ -20,18 +20,27 @@ void Drawable::PhotoPanel::SetUpPhotoPanel()
 	_windowLayoutManager.SetSingleWindowLayout();
 	//_windowLayoutManager.SetDoubleWindowLayout();
 
-
-	// TODO: We'll probably want to put the loading of all the images in to some sort of master place instead of individual photo panels
 	int photoIndex = 0;
-	for (const auto& entry : std::filesystem::directory_iterator(_directoryPath))
+	if (photoPanel)
 	{
-		BarleyPhoto barleyPhoto;
-		std::string path_string{ entry.path().u8string() };
-		_barleyPhotoMaps.insert(std::pair<int, BarleyPhoto>(photoIndex, barleyPhoto));
-		_barleyPhotoMaps[photoIndex].LoadSprite(path_string);
-		_allRandomPhotosVector.push_back(photoIndex);
-		_remainingRandomPhotosVector.push_back(photoIndex);
-		photoIndex++;
+		_barleyPhotoMaps = photoPanel->GetBarleyPhotoMaps();
+		_allRandomPhotosVector = photoPanel->GetAllRandomPhotosVector();
+		_remainingRandomPhotosVector = photoPanel->GetRemainingRandomPhotosVector();
+		photoIndex = _barleyPhotoMaps.size();
+	}
+	else
+	{
+		// TODO: We'll probably want to put the loading of all the images in to some sort of master place instead of individual photo panels
+		for (const auto& entry : std::filesystem::directory_iterator(_directoryPath))
+		{
+			BarleyPhoto barleyPhoto;
+			std::string path_string{ entry.path().u8string() };
+			_barleyPhotoMaps.insert(std::pair<int, BarleyPhoto>(photoIndex, barleyPhoto));
+			_barleyPhotoMaps[photoIndex].LoadSprite(path_string);
+			_allRandomPhotosVector.push_back(photoIndex);
+			_remainingRandomPhotosVector.push_back(photoIndex);
+			photoIndex++;
+		}
 	}
 
 	_barleyPhotoMapSize = photoIndex;
@@ -202,4 +211,19 @@ std::list<sf::Sprite> Drawable::PhotoPanel::GetPhotoPanelSprites()
 std::vector<BarleyPhoto>& Drawable::PhotoPanel::GetCurrentBarleyPhotos()
 {
 	return _currentBarleyPhotos;
+}
+
+std::map<int, BarleyPhoto>& Drawable::PhotoPanel::GetBarleyPhotoMaps()
+{
+	return _barleyPhotoMaps;
+}
+
+std::vector<unsigned int>& Drawable::PhotoPanel::GetAllRandomPhotosVector()
+{
+	return _allRandomPhotosVector;
+}
+
+std::vector<unsigned int>& Drawable::PhotoPanel::GetRemainingRandomPhotosVector()
+{
+	return _remainingRandomPhotosVector;
 }

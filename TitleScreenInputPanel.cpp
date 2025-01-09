@@ -17,12 +17,7 @@ public:
     Drawable::TitleScreenInputPanel* titleScreenInputPanel;
 public: void Execute()
 {
-    //Drawable::Panel::_isHidden = true;
-    //WindowManager::GetInstance()->HideOrShowAPanel(titleScreenInputPanel, true);
-    //Drawable::InputPanel::HidePanel(WindowManager::GetInstance()->GiveHiddenPanelPosition(_panelSize));
-
-    //WindowManager::GetInstance()->TrialClearPanels();
-    WindowManager::GetInstance()->ShowStartingInputPanel();
+    WindowManager::GetInstance()->ShowStartingInputPanel(&titleScreenInputPanel->_previewPhotoPanel);
 
     //Not sure if we want to destory this or keep it hidden
     if (titleScreenInputPanel)

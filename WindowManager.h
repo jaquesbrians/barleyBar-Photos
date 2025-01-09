@@ -2,6 +2,7 @@
 #include "PhotoWindow.h";
 #include "ColorChanger.h";
 #include "InputPanel.h"
+#include "PhotoPanel.h"
 #include <SFML/Graphics.hpp>
 
 using namespace Drawable;
@@ -59,7 +60,7 @@ class WindowManager
 		sf::Vector2f GiveHiddenPanelPosition(sf::Vector2f panelSize);
 		sf::Vector2f GiveHiddenPanelScale();
 
-		void ShowStartingInputPanel(); // we're just trying to get this to work.  Not sure this panel will get specific unique function.
+		void ShowStartingInputPanel(PhotoPanel* photoPanel = nullptr); // we're just trying to get this to work.  Not sure this panel will get specific unique function.
 
 		void CloseWindow() { _closeWindow = true; }
 

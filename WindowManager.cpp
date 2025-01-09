@@ -40,15 +40,6 @@ void WindowManager::StartWindowManager()
 	_inputPanels.push_back(titleScreenInputPanel);
 
 	_currentSeletedPanel = titleScreenInputPanel;
-
-	//DO NOT ERASE UNTIL WE FIGURE OUT HOW TO TRANSITION TO THIS PANEL
-	/*StartingInputPanel* startingInputPanel = new StartingInputPanel(
-		sf::Vector2f(winSizeWidth, winSizeHeight),
-		sf::Vector2f(windowPosWidth, windowPosHeight),
-		sf::Color(0.0f, 0.0f, 0.0f),
-		6, InputPanel::ButtonPositions::Left);
-
-	_inputPanels.push_back(startingInputPanel);*/
 	
 
 	for (std::list<InputPanel*>::iterator it = _inputPanels.begin(); it != _inputPanels.end(); it++)
@@ -62,15 +53,16 @@ void WindowManager::TrialClearPanels()
 	_inputPanels.clear();
 }
 
-void WindowManager::ShowStartingInputPanel()
+void WindowManager::ShowStartingInputPanel(PhotoPanel* photoPanel)
 {
 	_inputPanels.clear();
 
-	/*StartingInputPanel* startingInputPanel = new StartingInputPanel(
+	StartingInputPanel* startingInputPanel = new StartingInputPanel(
 		sf::Vector2f(_winSizeWidth, _winSizeHeight),
 		sf::Vector2f(_windowPosWidth, _windowPosHeight),
 		sf::Color(0.0f, 0.0f, 0.0f),
-		6, InputPanel::ButtonPositions::Left);
+		6, InputPanel::ButtonPositions::Left,
+		photoPanel);
 
 	_inputPanels.push_back(startingInputPanel);
 
@@ -79,7 +71,7 @@ void WindowManager::ShowStartingInputPanel()
 	for (std::list<InputPanel*>::iterator it = _inputPanels.begin(); it != _inputPanels.end(); it++)
 	{
 		(*it)->UpdatePanelTimers();
-	}*/
+	}
 }
 
 InputPanel * WindowManager::CreateNewInputPanel(bool b)
