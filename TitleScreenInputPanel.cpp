@@ -7,8 +7,8 @@
 // 3.) Input Manager class is going to be WindowManager (and we'll need to figure out how to use that correctly.
 // 4.) Figure out who is controlling when the switch should happen with the renderer between the two input panels
 // 5.) Figure out why TitlScreen Input Panel's button's don't have any button feedback.  
-// 6.) And this is a big one.  The PhotoPanel does not need to get registered twice with each panel.  There could be a group shared
-// version.  That is why there is a delay between title screen and starting screen I believe.  Look at Set Up Photo Panel.cpp
+// 6.) Started getting the photo Panel to be passed through input panels.  I don't necessarily like it being passed so maybe it lives in
+//     the window manager?
 #pragma region ButtonFunction
 
 class TitleScreenInputPanelButton0 : public ButtonFunction
