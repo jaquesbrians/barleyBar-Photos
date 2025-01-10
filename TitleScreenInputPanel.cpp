@@ -22,7 +22,7 @@ public: void Execute()
     //Not sure if we want to destory this or keep it hidden
     if (titleScreenInputPanel)
     {
-        delete titleScreenInputPanel;
+        //delete titleScreenInputPanel;
     } 
 }
 };
