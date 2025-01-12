@@ -2,14 +2,20 @@
 #include <thread>
 #include "PhotoPanel.h"
 
+Drawable::PhotoPanel::~PhotoPanel()
+{
+}
+
+/*Drawable::PhotoPanel::PhotoPanel(sf::Vector2f size, sf::Vector2f position, sf::Color color)
+	:Panel(size, position, color)
+{
+}*/
+
 Drawable::PhotoPanel::PhotoPanel(sf::Vector2f size, sf::Vector2f position, sf::Color color)
 {
 	this->Panel::Panel(size, position, _currentBackGroundColor.RandomColorFadeTimeElapse());
 }
 
-Drawable::PhotoPanel::~PhotoPanel()
-{
-}
 
 void Drawable::PhotoPanel::SetUpPhotoPanel(PhotoPanel* photoPanel)
 {

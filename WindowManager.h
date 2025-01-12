@@ -13,6 +13,9 @@ class WindowManager
 		static WindowManager* Instance;
 
 		ColorChanger _currentBackGroundColor = sf::Color::White;
+
+		PhotoPanel* _previewPhotoPanel;
+		
 		InputPanel* _currentSeletedPanel;
 		std::map<InputPanel*, int> _hiddenInputPanelsMap;
 		sf::Vector2f _hiddenPanelScale = sf::Vector2f(0.10f, 0.05f);
@@ -27,10 +30,10 @@ class WindowManager
 		int _windowWidth = 0;
 		int _windowHeight = 0;
 
-		int _winSizeWidth = 0;
-		int _winSizeHeight = 0;
-		int _windowPosWidth = 0;
-		int _windowPosHeight = 0;
+		float _winSizeWidth = 0;
+		float _winSizeHeight = 0;
+		float _windowPosWidth = 0;
+		float _windowPosHeight = 0;
 
 		bool _closeWindow = false;
 

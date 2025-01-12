@@ -31,7 +31,7 @@ public: void Execute()
 
 
 Drawable::TitleScreenInputPanel::TitleScreenInputPanel(sf::Vector2f mainPanelSize, sf::Vector2f mainPanelPosition, sf::Color mainPanelColor,
-    int numberOfButtons, ButtonPositions buttonPositions)
+    int numberOfButtons, ButtonPositions buttonPositions, PhotoPanel* photoPanel)
     : InputPanel(mainPanelSize, mainPanelPosition, mainPanelColor, numberOfButtons, buttonPositions),
     _previewPhotoPanel(sf::Vector2f(mainPanelSize.x - 300.0f, mainPanelSize.y - 75.0f),
         sf::Vector2f(mainPanelPosition.x + 260.0f, mainPanelPosition.y + 50.0f), sf::Color(150.0f, 150.0f, 150.0f))
@@ -46,7 +46,7 @@ Drawable::TitleScreenInputPanel::TitleScreenInputPanel(sf::Vector2f mainPanelSiz
     titleScreenInputPanelButton0->titleScreenInputPanel = this;
 
     ContainAllPanelSprites();
-    SetUpPreviewPhotoPanel();
+    SetUpPreviewPhotoPanel(photoPanel);
 }
 
 
@@ -57,9 +57,9 @@ Drawable::TitleScreenInputPanel::~TitleScreenInputPanel()
 //Things for tomorrow 20241130
 //also ensure the cycle right is working as intended (I think the random choice thing might have a bug)
 
-void Drawable::TitleScreenInputPanel::SetUpPreviewPhotoPanel()
+void Drawable::TitleScreenInputPanel::SetUpPreviewPhotoPanel(PhotoPanel* photoPanel)
 {
-    _previewPhotoPanel.SetUpPhotoPanel();
+    _previewPhotoPanel.SetUpPhotoPanel(photoPanel);
     std::vector<BarleyPhoto>& currentBarleyPhotos = _previewPhotoPanel.GetCurrentBarleyPhotos();
     for (int i = 0; i < currentBarleyPhotos.size(); i++)
     {

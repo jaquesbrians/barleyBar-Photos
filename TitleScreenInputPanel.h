@@ -10,11 +10,11 @@ namespace Drawable
 		PhotoPanel _previewPhotoPanel;
 
 	protected:
-		void SetUpPreviewPhotoPanel();
+		void SetUpPreviewPhotoPanel(PhotoPanel* photoPanel = nullptr);
 
 	public:
 		TitleScreenInputPanel(sf::Vector2f mainPanelsize, sf::Vector2f manPanelPosition, sf::Color mainPanelColor,
-			int numberOfButtons = 1, ButtonPositions buttonPositions = Center);
+			int numberOfButtons = 1, ButtonPositions buttonPositions = Center, PhotoPanel* photoPanel = nullptr);
 		~TitleScreenInputPanel();
 
 		virtual void ContainAllPanelSprites();

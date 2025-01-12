@@ -31,11 +31,23 @@ void WindowManager::StartWindowManager()
 	_windowPosWidth = (_windowWidth * 0.5f) - (_winSizeWidth * 0.5f);
 	_windowPosHeight = (_windowHeight * 0.5f) - (_winSizeHeight * 0.5f);
 
+	//_previewPhotoPanel(sf::Vector2f(mainPanelSize.x - 300.0f, mainPanelSize.y - 75.0f),
+		//sf::Vector2f(mainPanelPosition.x + 260.0f, mainPanelPosition.y + 50.0f), sf::Color(150.0f, 150.0f, 150.0f))
+
+
+	PhotoPanel* photoPanel = new PhotoPanel(sf::Vector2f(_winSizeWidth - 300.0f, _winSizeHeight - 75.0f),
+		sf::Vector2f(_windowPosWidth + 260.0f, _windowPosHeight + 50.0f),
+		sf::Color(150.0f, 150.0f, 150.0f));
+
+	photoPanel->SetUpPhotoPanel();
+	_previewPhotoPanel = photoPanel;
+
 	TitleScreenInputPanel* titleScreenInputPanel = new TitleScreenInputPanel(
 		sf::Vector2f(_winSizeWidth, _winSizeHeight),
 		sf::Vector2f(_windowPosWidth, _windowPosHeight),
 		sf::Color(0.0f, 0.0f, 0.0f),
-		1, InputPanel::ButtonPositions::Left);
+		1, InputPanel::ButtonPositions::Left, 
+		_previewPhotoPanel);
 
 	_inputPanels.push_back(titleScreenInputPanel);
 
@@ -62,7 +74,7 @@ void WindowManager::ShowStartingInputPanel(PhotoPanel* photoPanel)
 		sf::Vector2f(_windowPosWidth, _windowPosHeight),
 		sf::Color(0.0f, 0.0f, 0.0f),
 		6, InputPanel::ButtonPositions::Left,
-		photoPanel);
+		_previewPhotoPanel);
 
 	_inputPanels.push_back(startingInputPanel);
 
